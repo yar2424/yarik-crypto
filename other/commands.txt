@@ -1,0 +1,6 @@
+mkdir -p .db && \
+PYTHONPATH=. python src/db/db_management/create_tables.py
+
+
+kill -9 $(lsof -t -i :8000) && \
+uvicorn src.api.app:app --reload
