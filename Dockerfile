@@ -4,7 +4,8 @@ WORKDIR /app
 
 COPY requirements.txt .
 
-RUN ["pip", "install", "--force-reinstall", "-r", "requirements.txt"]
+RUN ["pip", "install", "-r", "requirements1.txt"]
+RUN ["pip", "install", "--force-reinstall", "-r", "requirements2.txt"]
 
 COPY . .
 
