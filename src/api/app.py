@@ -21,7 +21,7 @@ app.include_router(api_router)
 # add periodic
 @app.on_event("startup")
 @repeat_every(seconds=15)
-def run_periodic():
+async def run_periodic():
     current_timestamp = zulu_time_now_str()
     periodic_task(current_timestamp)
 

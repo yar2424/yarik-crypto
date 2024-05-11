@@ -11,6 +11,7 @@ class Config(TypedDict):
     db_connection_string: str
     telegram_bot_api_base_url: str
     telegram_chat_ids: List[int]
+    jinja_templates_directory: str
 
 
 dev_config: Config = {
@@ -19,6 +20,7 @@ dev_config: Config = {
     "telegram_chat_ids": [
         430658596,  # philip
     ],
+    "jinja_templates_directory": "src/api/jinja_templates/",
 }
 
 if env == "dev":
