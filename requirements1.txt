@@ -1,5 +1,5 @@
 fastapi
-fastapi-restful
+fastapi-restful==0.5.0
 typing_inspect
 uvicorn
 httpx
