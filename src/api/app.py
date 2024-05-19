@@ -2,7 +2,7 @@ import subprocess
 import threading
 
 from fastapi import FastAPI
-from fastapi_utils.tasks import repeat_every
+from fastapi_restful.tasks import repeat_every
 
 from src.api.controllers.bingx import router as bingx_router
 from src.api.controllers.mexc import router as mexc_router
