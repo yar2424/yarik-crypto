@@ -1,4 +1,5 @@
 fastapi
 fastapi-restful
+typing_inspect
 uvicorn
 httpx
