@@ -34,8 +34,8 @@ prd_config: Config = {
         430658596,  # philip
     ],
     "jinja_templates_directory": "src/api/jinja_templates/",
-    "check_every_seconds": 60,
-    "back_url": "http://localhost:8000",
+    "check_every_seconds": 55,
+    "back_url": "https://yarik-crypto-production.up.railway.app",
 }
 
 if env == "dev":

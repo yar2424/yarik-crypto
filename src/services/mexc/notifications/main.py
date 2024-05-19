@@ -1,6 +1,7 @@
 # run notifs entrypoints
 from datetime import datetime, timedelta
 
+from src.config import config
 from src.db.repositories.telegram.NotifsRateLimiting import (
     get_last_sent,
     update_last_sent_now,
@@ -18,6 +19,10 @@ from src.services.mexc.types_ import TickerAnalyticsDataPoint
 from src.utils.telegram import send_message, send_message_broadcast
 
 notif_prefix = "mexc"
+
+
+def last_30_ticks_table_url_template(symbol: str):
+    return f"{config['back_url']}/mexc/n_last_ticks_table?symbol={symbol}&n=30"
 
 
 def should_send_notif_rate_limit(notif_name: str):
@@ -52,7 +57,7 @@ def handle_fair_last(value: float, symbol: str):
     message_to_send = f"""
 {full_notif_name}
 Last value: {value:f}
-Last 30 data points: 
+Last 30 data points: {last_30_ticks_table_url_template(symbol)}
 """
 
     if should_send_notif_rate_limit(full_notif_name):
@@ -71,7 +76,7 @@ def handle_index_fair(value: float, symbol: str):
     message_to_send = f"""
 {full_notif_name}
 Last value: {value:f}
-Last 30 data points: 
+Last 30 data points: {last_30_ticks_table_url_template(symbol)}
 """
 
     if should_send_notif_rate_limit(full_notif_name):
@@ -90,7 +95,7 @@ def handle_funding_rate_neg(value: float, symbol: str):
     message_to_send = f"""
 {full_notif_name}
 Last value: {value:f}
-Last 30 data points: 
+Last 30 data points: {last_30_ticks_table_url_template(symbol)}
 """
 
     if should_send_notif_rate_limit(full_notif_name):
