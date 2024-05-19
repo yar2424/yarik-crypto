@@ -2,10 +2,10 @@ from sqlalchemy import desc
 from typing_extensions import List
 
 from src.db.engine_session import SessionLocal
-from src.db.models.mexc.TickerTimeseries import (
+from src.db.models.bingx.TickerTimeseries import (
     TickerTimeseries as TickerTimeseriesModel,
 )
-from src.services.mexc.types_ import TickerAnalyticsDataPoint
+from src.services.bingx.types_ import TickerAnalyticsDataPoint
 
 
 def get_ticker_timeseries(symbol: str, steps: int) -> List[TickerAnalyticsDataPoint]:
@@ -21,15 +21,13 @@ def get_ticker_timeseries(symbol: str, steps: int) -> List[TickerAnalyticsDataPo
             {
                 "symbol": row.symbol,
                 "timestamp": row.timestamp,
-                "last_price": row.last_price,
+                "trade_price": row.trade_price,
                 "fair_price": row.fair_price,
                 "index_price": row.index_price,
                 "funding_rate": row.funding_rate,
                 #
                 "index_fair_delta_div_index": row.index_fair_delta_div_index,
-                "fair_last_delta_div_fair": row.fair_last_delta_div_fair,
-                #
-                "last_fair_delta_div_avg": row.last_fair_delta_div_avg,
+                "fair_trade_delta_div_fair": row.fair_trade_delta_div_fair,
             }
             for row in rows
         ]
@@ -41,15 +39,13 @@ def add_ticker_update(ticker_data_point: TickerAnalyticsDataPoint):
         row = TickerTimeseriesModel(
             symbol=ticker_data_point["symbol"],
             timestamp=ticker_data_point["timestamp"],
-            last_price=ticker_data_point["last_price"],
+            trade_price=ticker_data_point["trade_price"],
             fair_price=ticker_data_point["fair_price"],
             index_price=ticker_data_point["index_price"],
             funding_rate=ticker_data_point["funding_rate"],
             #
             index_fair_delta_div_index=ticker_data_point["index_fair_delta_div_index"],
-            fair_last_delta_div_fair=ticker_data_point["fair_last_delta_div_fair"],
-            #
-            last_fair_delta_div_avg=ticker_data_point["last_fair_delta_div_avg"],
+            fair_trade_delta_div_fair=ticker_data_point["fair_trade_delta_div_fair"],
         )
         session.add(row)
         session.commit()

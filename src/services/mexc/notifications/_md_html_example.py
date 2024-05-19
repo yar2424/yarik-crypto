@@ -2,18 +2,11 @@ import httpx
 from typing_extensions import List
 
 from src.config import config
-from src.services.scrapers.mexc.types_ import TickerAnalyticsDataPoint
+from src.services.mexc.types_ import TickerAnalyticsDataPoint
 from src.utils.telegram import escape_markdown_v2
 
 
-def check_notification_1_should_fire(
-    ticker_timeseries: List[TickerAnalyticsDataPoint],
-) -> bool:
-    "check if notification should fire"
-    return False
-
-
-def fire_notification_1():
+def fire_markdown_notif_example():
     """this notif is firing. here is data for last 15 mins. here is link to exchange"""
     message = escape_markdown_v2(
         """*bold text*
@@ -48,7 +41,7 @@ pre-formatted fixed-width code block written in the Python programming language
             print(response.text)
 
 
-def fire_notification_2():
+def fire_html_notif_example():
     """this notif is firing. here is data for last 15 mins. here is link to exchange"""
     message = """
 <b>bold</b>, <strong>bold</strong>
@@ -72,28 +65,3 @@ def fire_notification_2():
         )
         if response.status_code != 200:
             print(response.text)
-
-
-def fire_notification_3():
-    """this notif is firing. here is data for last 15 mins. here is link to exchange"""
-    message = """
-BTC is going ±crazy!
-https://futures.mexc.com/ru-RU/exchange/BTC_USDT
-<link to table with last n steps>
-"""
-
-    for chat_id in config["telegram_chat_ids"]:
-        payload = {
-            "chat_id": chat_id,
-            "text": message,
-        }
-        response = httpx.post(
-            f"{config['telegram_bot_api_base_url']}/sendMessage", json=payload
-        )
-        if response.status_code != 200:
-            print(response.text)
-
-
-def check_run_notifications(ticker_timeseries: List[TickerAnalyticsDataPoint]):
-    if check_notification_1_should_fire(ticker_timeseries):
-        fire_notification_1()

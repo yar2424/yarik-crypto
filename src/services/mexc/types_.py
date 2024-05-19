@@ -56,11 +56,18 @@ class TickerAnalyticsDataPoint(TypedDict):
     timestamp: str
     last_price: float
     fair_price: float
-    last_div_fair: float
-    delta_div_avg: float  # (lastPrice - fairPrice) / ((lastPrice + fairPrice) / 2)
+    index_price: float
+    funding_rate: float
+
+    index_fair_delta_div_index: float  # (indexPrice - fairPrice) / indexPrice
+    fair_last_delta_div_fair: float  # (fairPrice - lastPrice) / fairPrice
+
+    last_fair_delta_div_avg: (
+        float  # (lastPrice - fairPrice) / ((lastPrice + fairPrice) / 2)
+    )
 
 
-class MarketData(TypedDict):
+class WSMarketData(TypedDict):
     symbol: str
     lastPrice: float
     riseFallRate: float
@@ -75,5 +82,5 @@ class MarketData(TypedDict):
     timestamp: int
 
 
-class ResponseData(TypedDict):
-    data: List[MarketData]
+class WSResponseData(TypedDict):
+    data: List[WSMarketData]

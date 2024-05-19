@@ -14,21 +14,23 @@
       <table>
         <thead>
           <tr>
-            <th scope="col">Symbol</th>
-            <th scope="col">Timestamp</th>
-            <th scope="col">Last Price</th>
-            <th scope="col">Fair Price</th>
-            <th scope="col">DDA</th>
+            {% for column in text_columns %}
+            <th scope="col">{{ column }}</th>
+            {% endfor %}
+            {% for column in numeric_columns %}
+            <th scope="col">{{ column }}</th>
+            {% endfor %}
           </tr>
         </thead>
         <tbody>
           {% for data_point in data_points %}
           <tr>
-            <th scope="row">{{ data_point.symbol }}</th>
-            <td>{{ data_point.timestamp }}</td>
-            <td>{{ '{:f}'.format(data_point.last_price) }}</td>
-            <td>{{ '{:f}'.format(data_point.fair_price) }}</td>
-            <td>{{ '{:f}'.format(data_point.delta_div_avg) }}</td>
+            {% for column in text_columns %}
+            <td>{{ data_point[column] }}</th>
+            {% endfor %}
+            {% for column in numeric_columns %}
+            <td>{{ '{:f}'.format(data_point[column]) }}</th>
+            {% endfor %}
           </tr>
           {% endfor %}
         </tbody>

@@ -1,7 +1,7 @@
 import httpx
 from typing_extensions import List
 
-from src.services.scrapers.mexc.types_ import Ticker, TickersResponse
+from src.services.mexc.types_ import Ticker, TickersResponse
 
 
 def get_tickers_data() -> List[Ticker]:

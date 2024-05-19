@@ -12,6 +12,8 @@ class Config(TypedDict):
     telegram_bot_api_base_url: str
     telegram_chat_ids: List[int]
     jinja_templates_directory: str
+    check_every_seconds: int
+    back_url: str
 
 
 dev_config: Config = {
@@ -21,7 +23,22 @@ dev_config: Config = {
         430658596,  # philip
     ],
     "jinja_templates_directory": "src/api/jinja_templates/",
+    "check_every_seconds": 2,
+    "back_url": "http://localhost:8000",
+}
+
+prd_config: Config = {
+    "db_connection_string": "sqlite:///./.db/test.db",
+    "telegram_bot_api_base_url": f"https://api.telegram.org/bot{os.getenv('TELEGRAM_TOKEN')}",
+    "telegram_chat_ids": [
+        430658596,  # philip
+    ],
+    "jinja_templates_directory": "src/api/jinja_templates/",
+    "check_every_seconds": 60,
+    "back_url": "http://localhost:8000",
 }
 
 if env == "dev":
     config: Config = dev_config
+if env == "prd":
+    config: Config = prd_config

@@ -1,0 +1,6 @@
+new exhange
+  - periodic task
+  - scrape, persist
+  - model, repo
+  - notifs
+  - api routes

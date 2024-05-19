@@ -4,6 +4,11 @@ from typing_extensions import List, TypedDict
 from src.config import config
 
 
+def send_message_broadcast(text: str):
+    for chat_id in config["telegram_chat_ids"]:
+        send_message(chat_id, text)
+
+
 def send_message(chat_id: int, text: str):
     """Send a message to the specified chat ID via the Telegram bot."""
     url = config["telegram_bot_api_base_url"] + "/sendMessage"
@@ -16,7 +21,7 @@ def send_message(chat_id: int, text: str):
 def get_updates(last_update_id: int) -> List["Update"]:
     """Retrieve messages from Telegram server."""
     url = config["telegram_bot_api_base_url"] + "/getUpdates"
-    print(url)
+    print(f"Polling tg")
     params = {"timeout": 100, "offset": last_update_id + 1}
     response = httpx.get(url, params=params, timeout=100 + 10)
     if response.status_code == 200:

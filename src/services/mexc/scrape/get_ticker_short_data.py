@@ -3,7 +3,7 @@ from datetime import datetime, timezone
 import httpx
 from typing_extensions import List
 
-from src.services.scrapers.mexc.types_ import Ticker, TickerShort, TickersResponse
+from src.services.mexc.types_ import Ticker, TickerShort, TickersResponse
 
 
 def get_tickers_short_data() -> List[TickerShort]:
