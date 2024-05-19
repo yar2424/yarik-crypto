@@ -8,8 +8,8 @@ subnotifs: List[NotifParams] = [
     {"name": "10", "threshold": 0.1},
     {"name": "5", "threshold": 0.05},
     {"name": "1_3", "threshold": 0.013},
-    {"name": "1", "threshold": 0.01},
-    {"name": "0_5", "threshold": 0.005},
+    # {"name": "1", "threshold": 0.01},
+    # {"name": "0_5", "threshold": 0.005},
 ]  # in precedence order (only one (the first met) will be fired)
 
 
