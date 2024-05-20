@@ -58,6 +58,7 @@ def analysis_notif_send(latest_tickers_data_points: List[TickerAnalyticsDataPoin
         ]
         if not data_point_of_interest:
             print(f"WARNING: no symbol '{symbol}' was found in scraped data")
+            continue
         data_point_of_interest = data_point_of_interest[0]
 
         notifications_main(data_point_of_interest, symbol)
