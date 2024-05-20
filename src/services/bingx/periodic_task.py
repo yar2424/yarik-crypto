@@ -2,6 +2,7 @@ from typing_extensions import List
 
 from src.db.repositories.bingx.TickerTimeseries import (
     add_ticker_update,
+    add_tickers_updates,
     get_ticker_timeseries,
 )
 from src.services.bingx.all_symbols import all_symbols
@@ -41,8 +42,9 @@ async def scrape_update_db(execution_timestamp: str) -> List[TickerAnalyticsData
         for ticker in latest_tickers
     ]
 
-    for data_point in latest_tickers_my_format:
-        add_ticker_update(data_point)
+    # for data_point in latest_tickers_my_format:
+    #     add_ticker_update(data_point)
+    add_tickers_updates(latest_tickers_my_format)
 
     return latest_tickers_my_format
 

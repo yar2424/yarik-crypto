@@ -53,3 +53,27 @@ def add_ticker_update(ticker_data_point: TickerAnalyticsDataPoint):
         )
         session.add(row)
         session.commit()
+
+
+def add_tickers_updates(tickers_data_points: List[TickerAnalyticsDataPoint]):
+    rows_to_add = [
+        TickerTimeseriesModel(
+            symbol=ticker_data_point["symbol"],
+            timestamp=ticker_data_point["timestamp"],
+            last_price=ticker_data_point["last_price"],
+            fair_price=ticker_data_point["fair_price"],
+            index_price=ticker_data_point["index_price"],
+            funding_rate=ticker_data_point["funding_rate"],
+            #
+            index_fair_delta_div_index=ticker_data_point["index_fair_delta_div_index"],
+            fair_last_delta_div_fair=ticker_data_point["fair_last_delta_div_fair"],
+            #
+            last_fair_delta_div_avg=ticker_data_point["last_fair_delta_div_avg"],
+        )
+        for ticker_data_point in tickers_data_points
+    ]
+
+    # add rows to db
+    with SessionLocal() as session:
+        session.bulk_save_objects(rows_to_add)
+        session.commit()
