@@ -9,7 +9,7 @@ from src.db.repositories.telegram.NotifsRateLimiting import (
 from src.services.bingx.notifications.notifications.fair_trade import (
     get_notif_to_fire as get_notif_to_fire_fair_trade,
 )
-from src.services.bingx.notifications.notifications.index_fair import (
+from src.services.bingx.notifications.notifications.funding_rate_neg import (
     get_notif_to_fire as get_notif_to_fire_funding_rate_neg,
 )
 from src.services.bingx.notifications.notifications.index_fair import (

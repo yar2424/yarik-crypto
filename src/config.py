@@ -32,6 +32,7 @@ prd_config: Config = {
     "telegram_bot_api_base_url": f"https://api.telegram.org/bot{os.getenv('TELEGRAM_TOKEN')}",
     "telegram_chat_ids": [
         430658596,  # philip
+        447256439,  # yarik
     ],
     "jinja_templates_directory": "src/api/jinja_templates/",
     "check_every_seconds": 55,
