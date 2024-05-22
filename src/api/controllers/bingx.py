@@ -9,7 +9,6 @@ from typing_extensions import Annotated, List, Optional
 from src.api.templates import templates
 from src.config import config
 from src.db.repositories.bingx.TickerTimeseries import get_ticker_timeseries
-from src.services.bingx.all_symbols import all_symbols
 from src.services.bingx.scrape.get_ticker_data import get_ticker_data, get_tickers_data
 from src.utils.telegram import send_message_broadcast
 
@@ -28,6 +27,8 @@ async def scrape_all():
 
 @router.get("/pairs", tags=["bingx"])
 async def register_session():
+    all_tickers = await get_tickers_data()
+    all_symbols = sorted([ticker["symbol"] for ticker in all_tickers])
     return all_symbols
 
 

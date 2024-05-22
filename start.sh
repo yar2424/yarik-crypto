@@ -20,6 +20,6 @@ PYTHONPATH=. python src/entrypoints/scrape_periodic.py &
 
 PYTHONPATH=. python src/entrypoints/tg_id_reply.py &
 
-PYTHONPATH=. uvicorn src.api.app:app --reload &
+PYTHONPATH=. uvicorn src.api.app:app --host 0.0.0.0 &
 
 wait

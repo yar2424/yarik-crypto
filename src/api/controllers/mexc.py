@@ -9,7 +9,6 @@ from typing_extensions import Annotated, List, Optional
 from src.api.templates import templates
 from src.config import config
 from src.db.repositories.mexc.TickerTimeseries import get_ticker_timeseries
-from src.services.mexc.all_symbols import all_symbols
 from src.services.mexc.scrape.get_ticker_data import get_ticker_data, get_tickers_data
 from src.services.mexc.scrape.get_ticker_short_data import (
     get_ticker_short_data,
@@ -42,6 +41,8 @@ async def scrape_all_short():
 
 @router.get("/pairs", tags=["mexc"])
 async def register_session():
+    all_tickers = get_tickers_data()
+    all_symbols = sorted([ticker["symbol"] for ticker in all_tickers])
     return all_symbols
 
 

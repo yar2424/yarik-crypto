@@ -5,7 +5,6 @@ from src.db.repositories.bingx.TickerTimeseries import (
     add_tickers_updates,
     get_ticker_timeseries,
 )
-from src.services.bingx.all_symbols import all_symbols
 from src.services.bingx.notifications.main import main as notifications_main
 from src.services.bingx.scrape.get_ticker_data import get_tickers_data
 from src.services.bingx.types_ import TickerAnalyticsDataPoint
@@ -52,13 +51,6 @@ async def scrape_update_db(execution_timestamp: str) -> List[TickerAnalyticsData
 def analysis_notif_send(latest_tickers_data_points: List[TickerAnalyticsDataPoint]):
     "(not) get from db, analyze, notify"
     # ticker_timeseries = get_ticker_timeseries("BTC_USDT", steps=10)
-    for symbol in all_symbols:
-        data_point_of_interest = [
-            dp for dp in latest_tickers_data_points if dp["symbol"] == symbol
-        ]
-        if not data_point_of_interest:
-            print(f"WARNING: no symbol '{symbol}' was found in scraped data")
-            continue
-        data_point_of_interest = data_point_of_interest[0]
-
-        notifications_main(data_point_of_interest, symbol)
+    for data_point in latest_tickers_data_points:
+        symbol = data_point["symbol"]
+        notifications_main(data_point, symbol)
