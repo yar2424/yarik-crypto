@@ -1,9 +1,3 @@
-# prepare db
-# start uvicorn and other
-
-mkdir -p .db
-PYTHONPATH=. python src/db/db_management/create_tables.py
-
 # Function to kill all child processes in the process group
 cleanup() {
   echo "Cleaning up..."
@@ -11,9 +5,9 @@ cleanup() {
   kill -TERM -- -$$
 }
 
-
 # Trap SIGINT (Ctrl+C) and SIGTERM and call the cleanup function
 trap cleanup SIGINT SIGTERM
+
 
 # command > >(tee /proc/$$/fd/1) 2> >(tee /proc/$$/fd/2 >&2)
 PYTHONPATH=. python src/entrypoints/scrape_periodic.py &

@@ -88,9 +88,15 @@ async def n_last_ticks_csv(symbol: str, n: int):
         "timestamp",
         "last_price",
         "fair_price",
-        "last_div_fair",
-        "delta_div_avg",
+        "index_price",
+        "funding_rate",
+        #
+        "index_fair_delta_div_index",
+        "fair_last_delta_div_fair",
+        #
+        "last_fair_delta_div_avg",
     ]
+    # fieldnames = list(data[0].keys())
     writer = csv.DictWriter(buffer, fieldnames=fieldnames)
 
     # Write the header and rows to the buffer

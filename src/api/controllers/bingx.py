@@ -74,7 +74,9 @@ async def n_last_ticks_csv(symbol: str, n: int):
         "trade_price",
         "fair_price",
         "index_price",
-        "funding_rate" "index_fair_delta_div_index",
+        "funding_rate",
+        #
+        "index_fair_delta_div_index",
         "fair_trade_delta_div_fair",
     ]
     writer = csv.DictWriter(buffer, fieldnames=fieldnames)
