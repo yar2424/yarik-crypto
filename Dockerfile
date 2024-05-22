@@ -2,10 +2,7 @@ FROM python:3.10
 
 WORKDIR /app
 
-COPY requirements1.txt .
-COPY requirements2.txt .
-COPY requirements3.txt .
-COPY install_reqs.sh .
+COPY requirements.txt .
 RUN ["sh", "install_reqs.sh"]
 
 COPY . .

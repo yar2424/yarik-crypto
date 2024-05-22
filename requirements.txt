@@ -1,0 +1,9 @@
+fastapi
+# typing_inspect
+uvicorn
+SQLAlchemy>=2.0
+psycopg2-binary
+httpx
+playwright
+# + playwright install, playwright install-deps
+apscheduler
