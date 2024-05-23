@@ -2,7 +2,6 @@ import asyncio
 import time
 from datetime import datetime
 
-import schedule
 from apscheduler.schedulers.background import BackgroundScheduler
 
 from src.config import config
