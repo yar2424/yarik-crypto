@@ -55,7 +55,7 @@ def analysis_notif_send(latest_tickers_data_points: List[TickerAnalyticsDataPoin
     "(not) get from db, analyze, notify"
     for data_point in latest_tickers_data_points:
         symbol = data_point["symbol"]
-        # insta_notifications_main(data_point, symbol)
+        insta_notifications_main(data_point, symbol)
 
         ticker_timeseries = get_ticker_timeseries(symbol, steps=10)
         historic_notifications_main(ticker_timeseries, symbol)

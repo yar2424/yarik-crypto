@@ -20,7 +20,7 @@ def get_notif_to_fire(
     )
 
     if should_fire:
-        notif_to_fire_name = "funding_rate_neg"
+        notif_to_fire_name = "funding_rate_neg-3_ticks"
         notif_to_fire: NotifWithPriority = {
             "name": notif_to_fire_name,
             "priority": 0,
