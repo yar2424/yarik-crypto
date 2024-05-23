@@ -76,7 +76,7 @@ def handle_index_fair(data_points: List[TickerAnalyticsDataPoint], symbol: str):
     notif_to_fire = get_notif_to_fire_index_fair_3_ticks(data_points)
     if not notif_to_fire:
         return
-    full_notif_name = f"{notif_prefix}-{symbol}-{notif_to_fire}"
+    full_notif_name = f"{notif_prefix}-{symbol}-{notif_to_fire['name']}"
 
     print(
         f"wanna fire: {full_notif_name} with current value: {notif_to_fire['last_value']}"
@@ -100,7 +100,7 @@ def handle_funding_rate_neg(data_points: List[TickerAnalyticsDataPoint], symbol:
     notif_to_fire = get_notif_to_fire_funding_rate_neg_3_ticks(data_points)
     if not notif_to_fire:
         return
-    full_notif_name = f"{notif_prefix}-{symbol}-{notif_to_fire}"
+    full_notif_name = f"{notif_prefix}-{symbol}-{notif_to_fire['name']}"
 
     print(
         f"wanna fire: {full_notif_name} with current value: {notif_to_fire['last_value']}"

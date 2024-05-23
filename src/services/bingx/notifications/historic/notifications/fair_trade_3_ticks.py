@@ -2,7 +2,7 @@ import math
 
 from typing_extensions import List, Optional
 
-from services.bingx.notifications.historic.types_ import (
+from src.services.bingx.notifications.historic.types_ import (
     NotifTriggerParams,
     NotifWithPriority,
 )
