@@ -33,6 +33,8 @@ prd_config: Config = {
     "telegram_chat_ids": [
         430658596,  # philip
         447256439,  # yarik
+        510997939,  # yarik
+        743280024,  # andrii
     ],
     "jinja_templates_directory": "src/api/jinja_templates/",
     "check_every_seconds": 60,

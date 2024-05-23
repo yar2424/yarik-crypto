@@ -42,7 +42,7 @@ def should_send_notif_rate_limit(notif_name: str):
 def main(data_points: List[TickerAnalyticsDataPoint], symbol: str):
     handle_fair_trade(data_points, symbol)
     handle_index_fair(data_points, symbol)
-    handle_funding_rate_neg(data_points, symbol)
+    # handle_funding_rate_neg(data_points, symbol)
 
 
 # handle others

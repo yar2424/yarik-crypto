@@ -9,7 +9,7 @@ from src.db.repositories.telegram.NotifsRateLimiting import (
 from src.services.mexc.notifications.insta.notifications.fair_last import (
     get_notif_to_fire as get_notif_to_fire_fair_last,
 )
-from src.services.mexc.notifications.insta.notifications.index_fair import (
+from src.services.mexc.notifications.insta.notifications.funding_rate_neg_1 import (
     get_notif_to_fire as get_notif_to_fire_funding_rate_neg,
 )
 from src.services.mexc.notifications.insta.notifications.index_fair import (
