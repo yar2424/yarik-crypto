@@ -73,12 +73,22 @@ async def get_tickers_data() -> List[Contract]:
 
             return await finisher()
 
-    data = await scrape()
-    if not data or "data" not in data:
-        print("oops")
-        print(data)
-        print(dir(data))
-        print(data.keys())
+    tried = 0
+    while True:
+        data = await scrape()
+        if not data or "data" not in data:
+            tried += 1
+            if tried > 3:
+                print("CRITICAL Failed to scrape bingx")
+                return []
+            continue
+        else:
+            break
+    # if not data or "data" not in data:
+    #     print("oops")
+    #     print(data)
+    #     print(dir(data))
+    #     print(data.keys())
     return data["data"]["contracts"]
 
 
