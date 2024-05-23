@@ -74,6 +74,9 @@ async def get_tickers_data() -> List[Contract]:
             return await finisher()
 
     data = await scrape()
+    print(data)
+    print(dir(data))
+    print(data.keys())
     return data["data"]["contracts"]
 
 
