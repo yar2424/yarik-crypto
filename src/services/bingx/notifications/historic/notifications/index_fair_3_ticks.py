@@ -11,7 +11,7 @@ from src.services.bingx.types_ import TickerAnalyticsDataPoint
 notif_name_to_priority = {
     "index_fair-0_05-3_ticks": 1,
     "index_fair-0_5-3_ticks": 1,
-    "index_fair-1_3-3_ticks": 1,
+    "index_fair-2-3_ticks": 1,
     "index_fair-5-3_ticks": 2,
     "index_fair-10-3_ticks": 2,
 }
@@ -20,7 +20,7 @@ notif_name_to_priority = {
 subnotifs: List[NotifTriggerParams] = [
     {"notif_name": "10-3_ticks", "threshold": 0.1},
     {"notif_name": "5-3_ticks", "threshold": 0.05},
-    {"notif_name": "1_3-3_ticks", "threshold": 0.013},
+    {"notif_name": "2-3_ticks", "threshold": 0.02},
     # {"notif_name": "0_5-3_ticks", "threshold": 0.005},
     # {"notif_name": "0_05-3_ticks", "threshold": 0.0005},
 ]  # in precedence order (only one (the first met) will be fired)

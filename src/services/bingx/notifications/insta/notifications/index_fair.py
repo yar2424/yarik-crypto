@@ -7,7 +7,7 @@ from src.services.bingx.notifications.insta.notifications.NotifParams import Not
 subnotifs: List[NotifParams] = [
     {"name": "10", "threshold": 0.1},
     {"name": "5", "threshold": 0.05},
-    # {"name": "2", "threshold": 0.02},
+    {"name": "2", "threshold": 0.02},
 ]  # in precedence order (only one (the first met) will be fired)
 
 
