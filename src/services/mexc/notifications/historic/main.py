@@ -1,19 +1,21 @@
 # run notifs entrypoints
 from datetime import datetime, timedelta
 
+from typing_extensions import List
+
+from services.mexc.notifications.historic.notifications.fair_last_3_ticks import (
+    get_notif_to_fire as get_notif_to_fire_fair_last_3_ticks,
+)
 from src.config import config
 from src.db.repositories.telegram.NotifsRateLimiting import (
     get_last_sent,
     update_last_sent_now,
 )
-from src.services.mexc.notifications.notifications.fair_last import (
-    get_notif_to_fire as get_notif_to_fire_fair_last,
+from src.services.mexc.notifications.historic.notifications.funding_rate_neg_3_ticks import (
+    get_notif_to_fire as get_notif_to_fire_funding_rate_neg_3_ticks,
 )
-from src.services.mexc.notifications.notifications.index_fair import (
-    get_notif_to_fire as get_notif_to_fire_funding_rate_neg,
-)
-from src.services.mexc.notifications.notifications.index_fair import (
-    get_notif_to_fire as get_notif_to_fire_index_fair,
+from src.services.mexc.notifications.historic.notifications.index_fair_3_ticks import (
+    get_notif_to_fire as get_notif_to_fire_index_fair_3_ticks,
 )
 from src.services.mexc.types_ import TickerAnalyticsDataPoint
 from src.utils.telegram import send_message, send_message_broadcast
@@ -37,26 +39,31 @@ def should_send_notif_rate_limit(notif_name: str):
     return False
 
 
-def main(data_point: TickerAnalyticsDataPoint, symbol: str):
-    handle_fair_last(data_point["fair_last_delta_div_fair"], symbol)
-    handle_index_fair(data_point["index_fair_delta_div_index"], symbol)
-    handle_funding_rate_neg(data_point["funding_rate"], symbol)
+def main(data_points: List[TickerAnalyticsDataPoint], symbol: str):
+    handle_fair_last(data_points, symbol)
+    handle_index_fair(data_points, symbol)
+    handle_funding_rate_neg(data_points, symbol)
 
 
 # handle others
 
 
-def handle_fair_last(value: float, symbol: str):
-    notif_to_fire = get_notif_to_fire_fair_last(value)
+def handle_fair_last(data_points: List[TickerAnalyticsDataPoint], symbol: str):
+    notif_to_fire = get_notif_to_fire_fair_last_3_ticks(data_points)
     if not notif_to_fire:
         return
-    full_notif_name = f"{notif_prefix}-{symbol}-{notif_to_fire}"
+    full_notif_name = f"{notif_prefix}-{symbol}-{notif_to_fire['name']}"
 
-    print(f"wanna fire: {full_notif_name} with current value: {value}")
+    print(
+        f"wanna fire: {full_notif_name} with current value: {notif_to_fire['last_value']}"
+    )
+
+    priority_visual = "❗" * notif_to_fire["priority"]
 
     message_to_send = f"""
+{priority_visual}
 {full_notif_name}
-Last value: {value:f}
+Last value: {notif_to_fire['last_value']:f}
 Last 30 data points: {last_30_ticks_table_url_template(symbol)}
 """
 
@@ -65,17 +72,22 @@ Last 30 data points: {last_30_ticks_table_url_template(symbol)}
         update_last_sent_now(full_notif_name)
 
 
-def handle_index_fair(value: float, symbol: str):
-    notif_to_fire = get_notif_to_fire_index_fair(value)
+def handle_index_fair(data_points: List[TickerAnalyticsDataPoint], symbol: str):
+    notif_to_fire = get_notif_to_fire_index_fair_3_ticks(data_points)
     if not notif_to_fire:
         return
     full_notif_name = f"{notif_prefix}-{symbol}-{notif_to_fire}"
 
-    print(f"wanna fire: {full_notif_name} with current value: {value}")
+    print(
+        f"wanna fire: {full_notif_name} with current value: {notif_to_fire['last_value']}"
+    )
+
+    priority_visual = "❗" * notif_to_fire["priority"]
 
     message_to_send = f"""
+{priority_visual}
 {full_notif_name}
-Last value: {value:f}
+Last value: {notif_to_fire['last_value']:f}
 Last 30 data points: {last_30_ticks_table_url_template(symbol)}
 """
 
@@ -84,17 +96,22 @@ Last 30 data points: {last_30_ticks_table_url_template(symbol)}
         update_last_sent_now(full_notif_name)
 
 
-def handle_funding_rate_neg(value: float, symbol: str):
-    notif_to_fire = get_notif_to_fire_funding_rate_neg(value)
+def handle_funding_rate_neg(data_points: List[TickerAnalyticsDataPoint], symbol: str):
+    notif_to_fire = get_notif_to_fire_funding_rate_neg_3_ticks(data_points)
     if not notif_to_fire:
         return
     full_notif_name = f"{notif_prefix}-{symbol}-{notif_to_fire}"
 
-    print(f"wanna fire: {full_notif_name} with current value: {value}")
+    print(
+        f"wanna fire: {full_notif_name} with current value: {notif_to_fire['last_value']}"
+    )
+
+    priority_visual = "❗" * notif_to_fire["priority"]
 
     message_to_send = f"""
+{priority_visual}
 {full_notif_name}
-Last value: {value:f}
+Last value: {notif_to_fire['last_value']:f}
 Last 30 data points: {last_30_ticks_table_url_template(symbol)}
 """
 

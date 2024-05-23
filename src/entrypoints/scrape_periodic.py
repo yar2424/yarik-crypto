@@ -24,6 +24,7 @@ def main():
         "interval",
         seconds=config["check_every_seconds"],
         start_date=start_time,
+        max_instances=3,
     )
 
     scheduler.start()

@@ -4,7 +4,10 @@ from src.db.repositories.mexc.TickerTimeseries import (
     add_ticker_update,
     get_ticker_timeseries,
 )
-from src.services.mexc.notifications.main import main as notifications_main
+from src.services.mexc.notifications.historic.main import (
+    main as historic_notifications_main,
+)
+from src.services.mexc.notifications.insta.main import main as insta_notifications_main
 from src.services.mexc.scrape.get_ticker_data import get_tickers_data
 from src.services.mexc.types_ import TickerAnalyticsDataPoint
 
@@ -51,4 +54,8 @@ def analysis_notif_send(latest_tickers_data_points: List[TickerAnalyticsDataPoin
     # ticker_timeseries = get_ticker_timeseries("BTC_USDT", steps=10)
     for data_point in latest_tickers_data_points:
         symbol = data_point["symbol"]
-        notifications_main(data_point, symbol)
+
+        insta_notifications_main(data_point, symbol)
+
+        ticker_timeseries = get_ticker_timeseries(symbol, steps=10)
+        historic_notifications_main(ticker_timeseries, symbol)

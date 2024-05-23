@@ -2,7 +2,7 @@ import math
 
 from typing_extensions import List, Optional
 
-from src.services.mexc.notifications.notifications.NotifParams import NotifParams
+from src.services.mexc.notifications.insta.notifications.NotifParams import NotifParams
 
 subnotifs: List[NotifParams] = [
     {"name": "10", "threshold": 0.1},
