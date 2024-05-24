@@ -54,11 +54,16 @@ async def n_last_ticks(symbol: str, n: int):
 @router.get("/n_last_ticks_table", tags=["mexc"])
 async def n_last_ticks_table(request: Request, symbol: str, n: int):
     data_points = get_ticker_timeseries(symbol, steps=n)
+    pretty_data_points = [
+        {**data_point, "n": str(idx + 1), "timestamp": data_point["timestamp"][:-10]}
+        for idx, data_point in enumerate(data_points)
+    ]
     return templates.TemplateResponse(
         request=request,
         name="table.html",
         context={
             "text_columns": [
+                "n",
                 "symbol",
                 "timestamp",
             ],
@@ -71,7 +76,7 @@ async def n_last_ticks_table(request: Request, symbol: str, n: int):
                 "fair_last_delta_div_fair",
                 "last_fair_delta_div_avg",
             ],
-            "data_points": data_points,
+            "data_points": pretty_data_points,
         },
     )
 

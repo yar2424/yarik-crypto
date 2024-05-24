@@ -16,7 +16,11 @@ from src.services.mexc.notifications.insta.notifications.index_fair import (
     get_notif_to_fire as get_notif_to_fire_index_fair,
 )
 from src.services.mexc.types_ import TickerAnalyticsDataPoint
-from src.utils.telegram import send_message, send_message_broadcast
+from src.utils.telegram import (
+    send_message,
+    send_message_broadcast,
+    send_message_broadcast_chats,
+)
 
 notif_prefix = "mexc"
 
@@ -61,7 +65,7 @@ Last 30 data points: {last_30_ticks_table_url_template(symbol)}
 """
 
     if should_send_notif_rate_limit(full_notif_name):
-        send_message_broadcast(message_to_send)
+        send_message_broadcast_chats(message_to_send, ["all", "prior"])
         update_last_sent_now(full_notif_name)
 
 

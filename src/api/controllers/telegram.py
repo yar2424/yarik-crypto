@@ -2,7 +2,7 @@ import httpx
 from fastapi import APIRouter
 
 from src.config import config
-from src.utils.telegram import send_message_broadcast
+from src.utils.telegram import send_message, send_message_broadcast
 
 router = APIRouter()
 
@@ -28,8 +28,4 @@ https://futures.mexc.com/ru-RU/exchange/BTC_USDT
 
 <link to table with last n steps>
 """
-    payload = {
-        "chat_id": chat_id,
-        "text": message,
-    }
-    httpx.post(f"{config['telegram_bot_api_base_url']}/sendMessage", json=payload)
+    send_message(chat_id, message, "all")
