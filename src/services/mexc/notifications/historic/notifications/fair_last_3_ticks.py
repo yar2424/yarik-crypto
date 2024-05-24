@@ -16,6 +16,14 @@ notif_name_to_priority = {
     "fair_last-10-3_ticks": 2,
 }
 
+notif_name_to_chats = {
+    "fair_last-0_05-3_ticks": ["all", "prior"],
+    "fair_last-0_5-3_ticks": ["all", "prior"],
+    "fair_last-1_3-3_ticks": ["all", "prior"],
+    "fair_last-5-3_ticks": ["all", "prior"],
+    "fair_last-10-3_ticks": ["all", "prior"],
+}
+
 
 subnotifs: List[NotifTriggerParams] = [
     {"notif_name": "10-3_ticks", "threshold": 0.1},
@@ -53,5 +61,6 @@ def get_notif_to_fire(
                 "name": notif_to_fire_name,
                 "priority": notif_name_to_priority[notif_to_fire_name],
                 "last_value": data_points_to_analyze[-1]["fair_last_delta_div_fair"],
+                "chats": notif_name_to_chats[notif_to_fire_name],
             }
             return notif_to_fire

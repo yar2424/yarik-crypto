@@ -18,7 +18,11 @@ from src.services.bingx.notifications.historic.notifications.index_fair_3_ticks 
     get_notif_to_fire as get_notif_to_fire_index_fair_3_ticks,
 )
 from src.services.bingx.types_ import TickerAnalyticsDataPoint
-from src.utils.telegram import send_message, send_message_broadcast
+from src.utils.telegram import (
+    send_message,
+    send_message_broadcast,
+    send_message_broadcast_chats,
+)
 
 notif_prefix = "bingx"
 
@@ -68,7 +72,10 @@ Last 30 data points: {last_30_ticks_table_url_template(symbol)}
 """
 
     if should_send_notif_rate_limit(full_notif_name):
-        send_message_broadcast(message_to_send)
+        if notif_to_fire["chats"]:
+            send_message_broadcast_chats(message_to_send, notif_to_fire["chats"])
+        else:
+            send_message_broadcast(message_to_send)
         update_last_sent_now(full_notif_name)
 
 
@@ -92,7 +99,10 @@ Last 30 data points: {last_30_ticks_table_url_template(symbol)}
 """
 
     if should_send_notif_rate_limit(full_notif_name):
-        send_message_broadcast(message_to_send)
+        if notif_to_fire["chats"]:
+            send_message_broadcast_chats(message_to_send, notif_to_fire["chats"])
+        else:
+            send_message_broadcast(message_to_send)
         update_last_sent_now(full_notif_name)
 
 
@@ -116,5 +126,8 @@ Last 30 data points: {last_30_ticks_table_url_template(symbol)}
 """
 
     if should_send_notif_rate_limit(full_notif_name):
-        send_message_broadcast(message_to_send)
+        if notif_to_fire["chats"]:
+            send_message_broadcast_chats(message_to_send, notif_to_fire["chats"])
+        else:
+            send_message_broadcast(message_to_send)
         update_last_sent_now(full_notif_name)

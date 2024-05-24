@@ -1,8 +1,8 @@
-from src.services.periodic_tasks.tg_id_reply import periodic_tg
+from src.services.periodic_tasks.tg_id_reply import main as tg_polling_main
 
 
 def main():
-    periodic_tg()
+    tg_polling_main()
 
 
 if __name__ == "__main__":
