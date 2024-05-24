@@ -25,5 +25,6 @@ def get_notif_to_fire(
             "name": notif_to_fire_name,
             "priority": 0,
             "last_value": data_points_to_analyze[-1]["funding_rate"],
+            "chats": [],
         }
         return notif_to_fire

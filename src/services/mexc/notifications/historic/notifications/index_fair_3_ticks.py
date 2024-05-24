@@ -53,5 +53,6 @@ def get_notif_to_fire(
                 "name": notif_to_fire_name,
                 "priority": notif_name_to_priority[notif_to_fire_name],
                 "last_value": data_points_to_analyze[-1]["index_fair_delta_div_index"],
+                "chats": [],
             }
             return notif_to_fire
