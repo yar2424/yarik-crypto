@@ -42,15 +42,16 @@ def should_send_notif_rate_limit(notif_name: str):
 
 
 def main(data_point: TickerAnalyticsDataPoint, symbol: str):
-    handle_fair_last(data_point["fair_last_delta_div_fair"], symbol)
-    handle_index_fair(data_point["index_fair_delta_div_index"], symbol)
-    handle_funding_rate_neg(data_point["funding_rate"], symbol)
+    handle_fair_last(data_point, symbol)
+    handle_index_fair(data_point, symbol)
+    handle_funding_rate_neg(data_point, symbol)
 
 
 # handle others
 
 
-def handle_fair_last(value: float, symbol: str):
+def handle_fair_last(data_point: TickerAnalyticsDataPoint, symbol: str):
+    value = data_point["fair_last_delta_div_fair"]
     notif_to_fire = get_notif_to_fire_fair_last(value)
     if not notif_to_fire:
         return
@@ -60,6 +61,7 @@ def handle_fair_last(value: float, symbol: str):
 
     message_to_send = f"""
 {full_notif_name}
+Leverage max: {data_point['leverage_max']}
 Last value: {value:f}
 Last 30 data points: {last_30_ticks_table_url_template(symbol)}
 """
@@ -69,7 +71,8 @@ Last 30 data points: {last_30_ticks_table_url_template(symbol)}
         update_last_sent_now(full_notif_name)
 
 
-def handle_index_fair(value: float, symbol: str):
+def handle_index_fair(data_point: TickerAnalyticsDataPoint, symbol: str):
+    value = data_point["index_fair_delta_div_index"]
     notif_to_fire = get_notif_to_fire_index_fair(value)
     if not notif_to_fire:
         return
@@ -79,6 +82,7 @@ def handle_index_fair(value: float, symbol: str):
 
     message_to_send = f"""
 {full_notif_name}
+Leverage max: {data_point['leverage_max']}
 Last value: {value:f}
 Last 30 data points: {last_30_ticks_table_url_template(symbol)}
 """
@@ -88,7 +92,8 @@ Last 30 data points: {last_30_ticks_table_url_template(symbol)}
         update_last_sent_now(full_notif_name)
 
 
-def handle_funding_rate_neg(value: float, symbol: str):
+def handle_funding_rate_neg(data_point: TickerAnalyticsDataPoint, symbol: str):
+    value = data_point["funding_rate"]
     notif_to_fire = get_notif_to_fire_funding_rate_neg(value)
     if not notif_to_fire:
         return
@@ -98,6 +103,7 @@ def handle_funding_rate_neg(value: float, symbol: str):
 
     message_to_send = f"""
 {full_notif_name}
+Leverage max: {data_point['leverage_max']}
 Last value: {value:f}
 Last 30 data points: {last_30_ticks_table_url_template(symbol)}
 """

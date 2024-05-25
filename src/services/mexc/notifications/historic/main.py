@@ -67,6 +67,7 @@ def handle_fair_last(data_points: List[TickerAnalyticsDataPoint], symbol: str):
     message_to_send = f"""
 {priority_visual}
 {full_notif_name}
+Leverage max: {data_points[-1]['leverage_max']}
 Last value: {notif_to_fire['last_value']:f}
 Last 30 data points: {last_30_ticks_table_url_template(symbol)}
 """
@@ -94,6 +95,7 @@ def handle_index_fair(data_points: List[TickerAnalyticsDataPoint], symbol: str):
     message_to_send = f"""
 {priority_visual}
 {full_notif_name}
+Leverage max: {data_points[-1]['leverage_max']}
 Last value: {notif_to_fire['last_value']:f}
 Last 30 data points: {last_30_ticks_table_url_template(symbol)}
 """
@@ -121,6 +123,7 @@ def handle_funding_rate_neg(data_points: List[TickerAnalyticsDataPoint], symbol:
     message_to_send = f"""
 {priority_visual}
 {full_notif_name}
+Leverage max: {data_points[-1]['leverage_max']}
 Last value: {notif_to_fire['last_value']:f}
 Last 30 data points: {last_30_ticks_table_url_template(symbol)}
 """

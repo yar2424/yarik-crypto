@@ -15,6 +15,7 @@ class TickerTimeseries(Base):
     fair_price: Mapped[float] = mapped_column()
     index_price: Mapped[float] = mapped_column()
     funding_rate: Mapped[float] = mapped_column()
+    leverage_max: Mapped[int] = mapped_column()
 
     index_fair_delta_div_index: Mapped[float] = mapped_column()
     fair_last_delta_div_fair: Mapped[float] = mapped_column()

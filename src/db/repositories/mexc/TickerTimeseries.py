@@ -25,6 +25,7 @@ def get_ticker_timeseries(symbol: str, steps: int) -> List[TickerAnalyticsDataPo
                 "fair_price": row.fair_price,
                 "index_price": row.index_price,
                 "funding_rate": row.funding_rate,
+                "leverage_max": row.leverage_max,
                 #
                 "index_fair_delta_div_index": row.index_fair_delta_div_index,
                 "fair_last_delta_div_fair": row.fair_last_delta_div_fair,
@@ -45,6 +46,7 @@ def add_ticker_update(ticker_data_point: TickerAnalyticsDataPoint):
             fair_price=ticker_data_point["fair_price"],
             index_price=ticker_data_point["index_price"],
             funding_rate=ticker_data_point["funding_rate"],
+            leverage_max=ticker_data_point["leverage_max"],
             #
             index_fair_delta_div_index=ticker_data_point["index_fair_delta_div_index"],
             fair_last_delta_div_fair=ticker_data_point["fair_last_delta_div_fair"],
@@ -64,6 +66,7 @@ def add_tickers_updates(tickers_data_points: List[TickerAnalyticsDataPoint]):
             fair_price=ticker_data_point["fair_price"],
             index_price=ticker_data_point["index_price"],
             funding_rate=ticker_data_point["funding_rate"],
+            leverage_max=ticker_data_point["leverage_max"],
             #
             index_fair_delta_div_index=ticker_data_point["index_fair_delta_div_index"],
             fair_last_delta_div_fair=ticker_data_point["fair_last_delta_div_fair"],

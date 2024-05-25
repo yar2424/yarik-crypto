@@ -25,20 +25,33 @@ def scrape_update_db(execution_timestamp: str) -> List[TickerAnalyticsDataPoint]
 
     latest_tickers_my_format: List[TickerAnalyticsDataPoint] = [
         {
-            "symbol": ticker["symbol"],
+            "symbol": ticker["ticker_data"]["symbol"],
             "timestamp": execution_timestamp,
-            "last_price": ticker["lastPrice"],
-            "fair_price": ticker["fairPrice"],
-            "index_price": ticker["indexPrice"],
-            "funding_rate": ticker["fundingRate"],
+            "last_price": ticker["ticker_data"]["lastPrice"],
+            "fair_price": ticker["ticker_data"]["fairPrice"],
+            "index_price": ticker["ticker_data"]["indexPrice"],
+            "funding_rate": ticker["ticker_data"]["fundingRate"],
+            "leverage_max": ticker["contract_data"]["maxL"],
             #
-            "index_fair_delta_div_index": (ticker["indexPrice"] - ticker["fairPrice"])
-            / ticker["indexPrice"],
-            "fair_last_delta_div_fair": (ticker["fairPrice"] - ticker["lastPrice"])
-            / ticker["fairPrice"],
+            "index_fair_delta_div_index": (
+                ticker["ticker_data"]["indexPrice"] - ticker["ticker_data"]["fairPrice"]
+            )
+            / ticker["ticker_data"]["indexPrice"],
+            "fair_last_delta_div_fair": (
+                ticker["ticker_data"]["fairPrice"] - ticker["ticker_data"]["lastPrice"]
+            )
+            / ticker["ticker_data"]["fairPrice"],
             #
-            "last_fair_delta_div_avg": (ticker["lastPrice"] - ticker["fairPrice"])
-            / ((ticker["lastPrice"] + ticker["fairPrice"]) / 2),
+            "last_fair_delta_div_avg": (
+                ticker["ticker_data"]["lastPrice"] - ticker["ticker_data"]["fairPrice"]
+            )
+            / (
+                (
+                    ticker["ticker_data"]["lastPrice"]
+                    + ticker["ticker_data"]["fairPrice"]
+                )
+                / 2
+            ),
         }
         for ticker in latest_tickers
     ]

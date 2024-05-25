@@ -42,7 +42,7 @@ async def scrape_all_short():
 @router.get("/pairs", tags=["mexc"])
 async def register_session():
     all_tickers = get_tickers_data()
-    all_symbols = sorted([ticker["symbol"] for ticker in all_tickers])
+    all_symbols = sorted([ticker["ticker_data"]["symbol"] for ticker in all_tickers])
     return all_symbols
 
 
@@ -66,6 +66,7 @@ async def n_last_ticks_table(request: Request, symbol: str, n: int):
                 "n",
                 "symbol",
                 "timestamp",
+                "leverage_max",
             ],
             "numeric_columns": [
                 "last_price",
@@ -96,6 +97,7 @@ async def n_last_ticks_csv(symbol: str, n: int):
         "fair_price",
         "index_price",
         "funding_rate",
+        "leverage_max",
         #
         "index_fair_delta_div_index",
         "fair_last_delta_div_fair",
