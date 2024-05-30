@@ -1,3 +1,5 @@
+from datetime import datetime
+
 import httpx
 from typing_extensions import List, TypedDict
 
@@ -14,9 +16,17 @@ def send_message_broadcast(text: str, chat: str = "all"):
         send_message(chat_id, text, chat)
 
 
+def _debug_inject(text: str):
+    now = datetime.utcnow()
+    sent_at = now.isoformat()
+    return f"{text}/nSent at: {sent_at}"
+
+
 def send_message(chat_id: int, text: str, chat: str):
     """Send a message to the specified chat ID and chat via the Telegram bot."""
     chat_of_interest = [chat_ for chat_ in config["chats"] if chat_["name"] == chat][0]
+
+    text = _debug_inject(text)
 
     url = chat_of_interest["base_url"] + "/sendMessage"
     payload = {"chat_id": chat_id, "text": text}
