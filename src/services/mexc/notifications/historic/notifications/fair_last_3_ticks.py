@@ -43,7 +43,7 @@ def should_fire(
 ) -> bool:
     return all(
         [
-            data_point["fair_last_delta_div_fair"] > notif_params["threshold"]
+            abs(data_point["fair_last_delta_div_fair"]) > notif_params["threshold"]
             for data_point in data_points
         ]
     )

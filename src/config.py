@@ -37,7 +37,7 @@ dev_config: Config = {
         },
     ],
     "jinja_templates_directory": "src/api/jinja_templates/",
-    "check_every_seconds": 5,
+    "check_every_seconds": 60,
     "back_url": "http://localhost:8000",
 }
 

@@ -166,3 +166,10 @@ cython_debug/
 
 **/.DS_Store
 *.env
+lbank_login_debug_screenshot.jpg
+chats.py
+_temp/bingx-bash-script_.sh
+_temp/bingx-bash-script.sh
+_temp/bingx-test-data.json
+_temp/bingx-test-error.json
+_temp/make_get_tg_updates.py

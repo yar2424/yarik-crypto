@@ -1,6 +1,14 @@
 new exhange
   - periodic task
-  - scrape, persist
-  - model, repo
-  - notifs
+  - scrape
+    - last/trade
+    - fair/mark
+    - index
+    -
+    - funding rate
+    -
+    - levers
+  - persist
+    - model, repo
   - api routes
+  - notifs

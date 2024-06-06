@@ -4,6 +4,7 @@ uvicorn
 SQLAlchemy>=2.0
 psycopg2-binary
 httpx
+websocket-client
 playwright
 # + playwright install, playwright install-deps
 apscheduler

@@ -18,7 +18,7 @@ def send_message_broadcast(text: str, chat: str = "all"):
 
 def _debug_inject(text: str):
     now = datetime.utcnow()
-    sent_at = now.isoformat()
+    sent_at = now.isoformat()[:-7]
     return f"{text}\nSent at: {sent_at}"
 
 

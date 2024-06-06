@@ -1,0 +1,38 @@
+{
+  "code": 200,
+  "data": {
+    "fundingRateTimestamp": 28800,
+    "isMarketAcount": 0,
+    "longMaxVolume": 100.0,
+    "role": 2,
+    "openingTime": 1609545600000,
+    "isCrossMargin": 1,
+    "longLeverage": 200.0,
+    "shortLastVolume": 100.0,
+    "longLastVolume": 100.0,
+    "onTime": 1609459200000,
+    "state": 3,
+    "markedPrice": "68362.0",
+    "assetBalance": {
+      "balance": "0",
+      "frozenMargin": "0",
+      "totalCloseProfit": "0",
+      "available": "0",
+      "crossMargin": "0",
+      "frozenFee": "0",
+      "marginAble": "0"
+    },
+    "longMaxLeverage": 200,
+    "unrealProfitCalType": "2",
+    "shortMaxVolume": 100.0,
+    "shortLeverage": 200.0,
+    "wsToken": "b3040ef0878d89a01aa144f0d574b569dfb0905887b2ac6e3fc3be3efa3ce6a7",
+    "shortMaxLeverage": 200,
+    "nextFundingRateTimestamp": 1717113600000,
+    "forbidTrade": false,
+    "defaultPositionType": "1",
+    "lastPrice": "68364.5",
+    "fundingRate": "0.000286"
+  },
+  "message": "Успех"
+}
