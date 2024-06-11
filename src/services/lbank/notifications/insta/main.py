@@ -6,9 +6,10 @@ from src.db.repositories.telegram.NotifsRateLimiting import (
     get_last_sent,
     update_last_sent_now,
 )
-from src.services.lbank.notifications.insta.notifications.funding_rate_neg_1 import (
-    get_notif_to_fire as get_notif_to_fire_funding_rate_neg,
-)
+
+# from src.services.lbank.notifications.insta.notifications.funding_rate_neg_1 import (
+#     get_notif_to_fire as get_notif_to_fire_funding_rate_neg,
+# )
 from src.services.lbank.notifications.insta.notifications.index_mark import (
     get_notif_to_fire as get_notif_to_fire_index_mark,
 )

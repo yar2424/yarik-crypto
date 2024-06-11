@@ -11,16 +11,16 @@ from src.services.lbank.types_ import TickerAnalyticsDataPoint
 notif_name_to_priority = {
     "index_mark-0_05-3_ticks": 1,
     "index_mark-0_5-3_ticks": 1,
-    "index_mark-2-3_ticks": 1,
-    "index_mark-5-3_ticks": 2,
-    "index_mark-10-3_ticks": 2,
+    "index_mark-2_5-3_ticks": 1,
+    "index_mark-4-3_ticks": 2,
+    "index_mark-8-3_ticks": 2,
 }
 
 
 subnotifs: List[NotifTriggerParams] = [
-    {"notif_name": "10-3_ticks", "threshold": 0.1},
-    {"notif_name": "5-3_ticks", "threshold": 0.05},
-    {"notif_name": "2-3_ticks", "threshold": 0.02},
+    {"notif_name": "8-3_ticks", "threshold": 0.08},
+    {"notif_name": "4-3_ticks", "threshold": 0.04},
+    {"notif_name": "2_5-3_ticks", "threshold": 0.025},
     # {"notif_name": "0_5-3_ticks", "threshold": 0.005},
     # {"notif_name": "0_05-3_ticks", "threshold": 0.0005},
 ]  # in precedence order (only one (the first met) will be fired)

@@ -11,24 +11,24 @@ from src.services.lbank.types_ import TickerAnalyticsDataPoint
 notif_name_to_priority = {
     "mark_last-0_05-3_ticks": 1,
     "mark_last-0_5-3_ticks": 1,
-    "mark_last-1_3-3_ticks": 1,
-    "mark_last-5-3_ticks": 2,
-    "mark_last-10-3_ticks": 2,
+    "mark_last-2_5-3_ticks": 1,
+    "mark_last-4-3_ticks": 2,
+    "mark_last-8-3_ticks": 2,
 }
 
 notif_name_to_chats = {
     "mark_last-0_05-3_ticks": ["all", "prior"],
     "mark_last-0_5-3_ticks": ["all", "prior"],
-    "mark_last-1_3-3_ticks": ["all", "prior"],
-    "mark_last-5-3_ticks": ["all", "prior"],
-    "mark_last-10-3_ticks": ["all", "prior"],
+    "mark_last-2_5-3_ticks": ["all", "prior"],
+    "mark_last-4-3_ticks": ["all", "prior"],
+    "mark_last-8-3_ticks": ["all", "prior"],
 }
 
 
 subnotifs: List[NotifTriggerParams] = [
-    {"notif_name": "10-3_ticks", "threshold": 0.1},
-    {"notif_name": "5-3_ticks", "threshold": 0.05},
-    {"notif_name": "1_3-3_ticks", "threshold": 0.013},
+    {"notif_name": "8-3_ticks", "threshold": 0.08},
+    {"notif_name": "4-3_ticks", "threshold": 0.04},
+    {"notif_name": "2_5-3_ticks", "threshold": 0.025},
     # {"notif_name": "0_5-3_ticks", "threshold": 0.005},
     # {"notif_name": "0_05-3_ticks", "threshold": 0.0005},
 ]  # in precedence order (only one (the first met) will be fired)
@@ -44,6 +44,7 @@ def should_fire(
     return all(
         [
             abs(data_point["mark_last_delta_div_mark"]) > notif_params["threshold"]
+            and abs(data_point["mark_last_delta_div_mark"]) < 0.9
             for data_point in data_points
         ]
     )

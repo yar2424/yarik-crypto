@@ -36,7 +36,7 @@
             <td>{{ data_point[column] }}</th>
             {% endfor %}
             {% for column in numeric_columns %}
-            <td>{{ '{:f}'.format(data_point[column]) }}</th>
+            <td>{{ '{:.12f}'.format(data_point[column]) }}</th>
             {% endfor %}
           </tr>
           {% endfor %}
