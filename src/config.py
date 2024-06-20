@@ -48,6 +48,7 @@ prd_config: Config = {
         447256439,  # yarik
         510997939,  # yarik
         743280024,  # andrii
+        581763116,
     ],
     "chats": [
         {
