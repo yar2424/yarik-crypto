@@ -31,7 +31,8 @@ jobs:
 
       - name: Pull, tag, and push Docker image
         run: |
-          IMAGE_URI=${{ secrets.ECR_REPOSITORY }}:hello-world
+          # IMAGE_URI=${{ secrets.ECR_REPOSITORY }}:hello-world
+          IMAGE_URI=public.ecr.aws/l3t7h2r5/yarik-crypto-scraper:hello-world
           docker pull hello-world
           docker tag hello-world $IMAGE_URI
           docker push $IMAGE_URI
