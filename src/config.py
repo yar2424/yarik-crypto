@@ -38,13 +38,12 @@ dev_config: Config = {
         },
     ],
     "jinja_templates_directory": "src/api/jinja_templates/",
-    "check_every_seconds": 60,
-    # "back_url": "http://localhost:8000",
-    "back_url": f"http://{os.getenv('ECS_PUBLIC_IP')}:8000",
+    "check_every_seconds": 600,
+    "back_url": "http://localhost:8000",
 }
 
 prd_config: Config = {
-    "db_connection_string": "postgresql+psycopg2://username:password@host:port/dbname",
+    "db_connection_string": f"postgresql+psycopg2://postgres:{os.getenv('POSTGRES_PASSWORD')}@{os.getenv('POSTGRES_HOST')}:5432/yarik_crypto_scraper",
     "telegram_chat_ids": [
         430658596,  # philip
         447256439,  # yarik
@@ -64,7 +63,7 @@ prd_config: Config = {
     ],
     "jinja_templates_directory": "src/api/jinja_templates/",
     "check_every_seconds": 60,
-    "back_url": "https://yarik-crypto-production.up.railway.app",
+    "back_url": f"http://{os.getenv('ECS_PUBLIC_IP')}:8000",
 }
 
 if env == "dev":

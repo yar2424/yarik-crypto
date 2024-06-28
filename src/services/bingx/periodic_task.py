@@ -20,6 +20,7 @@ async def periodic_task(execution_timestamp: str):
     with timeit_context("bingx full execution"):
         with timeit_context("bingx scraping"):
             latest_tickers_data_points = await scrape_update_db(execution_timestamp)
+            print(f"bingx n_symbols: {len(latest_tickers_data_points)}")
         with timeit_context("bingx notifs"):
             analysis_notif_send(latest_tickers_data_points)
 

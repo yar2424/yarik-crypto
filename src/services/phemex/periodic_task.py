@@ -21,6 +21,7 @@ async def periodic_task(execution_timestamp: str):
     with timeit_context("phemex full execution"):
         with timeit_context("phemex scraping"):
             latest_tickers_data_points = await scrape_update_db(execution_timestamp)
+            print(f"phemex n_symbols: {len(latest_tickers_data_points)}")
         with timeit_context("phemex notifs"):
             analysis_notif_send(latest_tickers_data_points)
 

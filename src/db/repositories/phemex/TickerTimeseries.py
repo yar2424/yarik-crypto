@@ -1,11 +1,17 @@
-from sqlalchemy import desc
-from typing_extensions import List
+from sqlalchemy import desc, func
+from typing_extensions import List, Mapping
 
 from src.db.engine_session import SessionLocal
 from src.db.models.phemex.TickerTimeseries import (
     TickerTimeseries as TickerTimeseriesModel,
 )
 from src.services.phemex.types_ import TickerAnalyticsDataPoint
+
+
+def get_tickers_timeseries(symbols: List[str], steps: int) -> Mapping[str, List[dict]]:
+    # get latest update id
+    # get for symbol in symbols and update id > latest update id - n_steps
+    pass
 
 
 def get_ticker_timeseries(symbol: str, steps: int) -> List[TickerAnalyticsDataPoint]:

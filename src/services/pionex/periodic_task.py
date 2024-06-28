@@ -18,10 +18,11 @@ from src.utils.utils import timeit_context
 async def periodic_task(execution_timestamp: str):
     "scrape, create object, persist in db"
     "get from db, analyze, notify"
-    with timeit_context("periodic_task full execution"):
-        with timeit_context("periodic_task scraping"):
+    with timeit_context("pionex full execution"):
+        with timeit_context("pionex scraping"):
             latest_tickers_data_points = await scrape_update_db(execution_timestamp)
-        with timeit_context("periodic_task notifs"):
+            print(f"pionex n_symbols: {len(latest_tickers_data_points)}")
+        with timeit_context("pionex notifs"):
             analysis_notif_send(latest_tickers_data_points)
 
 

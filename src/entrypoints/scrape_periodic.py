@@ -1,6 +1,6 @@
 import asyncio
 import time
-from datetime import datetime
+from datetime import datetime, timedelta
 
 from apscheduler.schedulers.background import BackgroundScheduler
 
@@ -15,8 +15,8 @@ def main():
     scheduler = BackgroundScheduler()
 
     now = datetime.now()
-    # start_time = (now.replace(second=0, microsecond=0) + timedelta(minutes=1))
-    start_time = now.replace(second=0, microsecond=0)
+    start_time = now.replace(second=0, microsecond=0) + timedelta(minutes=1)
+    # start_time = now.replace(second=0, microsecond=0)
 
     scheduler.add_job(
         periodic_task,

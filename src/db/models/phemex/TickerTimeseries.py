@@ -9,6 +9,8 @@ class TickerTimeseries(Base):
 
     id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
 
+    # update_id: Mapped[int] = mapped_column()
+
     symbol: Mapped[str] = mapped_column()
     timestamp: Mapped[str] = mapped_column()
     last_price: Mapped[float] = mapped_column()
