@@ -13,10 +13,11 @@ export ECS_PUBLIC_IP=$(curl -s http://ifconfig.me)
 echo $ECS_PUBLIC_IP
 
 # command > >(tee /proc/$$/fd/1) 2> >(tee /proc/$$/fd/2 >&2)
-PYTHONPATH=. python src/entrypoints/scrape_periodic.py &
 
 PYTHONPATH=. python src/entrypoints/tg_id_reply.py &
 
 PYTHONPATH=. uvicorn src.api.app:app --host 0.0.0.0 &
+
+PYTHONPATH=. python src/entrypoints/scrape_periodic.py &
 
 wait
