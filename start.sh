@@ -9,7 +9,7 @@ cleanup() {
 # Trap SIGINT (Ctrl+C) and SIGTERM and call the cleanup function
 trap cleanup SIGINT SIGTERM
 
-export ECS_PUBLIC_IP=$(curl -s http://169.254.169.254/latest/meta-data/public-ipv4)
+export ECS_PUBLIC_IP=$(curl -s http://ifconfig.me)
 echo $ECS_PUBLIC_IP
 
 # command > >(tee /proc/$$/fd/1) 2> >(tee /proc/$$/fd/2 >&2)
