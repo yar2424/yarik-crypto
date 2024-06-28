@@ -173,3 +173,4 @@ _temp/bingx-bash-script.sh
 _temp/bingx-test-data.json
 _temp/bingx-test-error.json
 _temp/make_get_tg_updates.py
+other/ecr_ecs_aws_creds.txt

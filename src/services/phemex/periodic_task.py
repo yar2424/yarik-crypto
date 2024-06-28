@@ -24,6 +24,7 @@ async def periodic_task(execution_timestamp: str):
         with timeit_context("periodic_task notifs"):
             analysis_notif_send(latest_tickers_data_points)
 
+
 async def scrape_update_db(execution_timestamp: str) -> List[TickerAnalyticsDataPoint]:
     "scrape, create object, persist in db. return current data points"
     latest_tickers = await get_tickers_data()
@@ -55,10 +56,10 @@ async def scrape_update_db(execution_timestamp: str) -> List[TickerAnalyticsData
 
 def analysis_notif_send(latest_tickers_data_points: List[TickerAnalyticsDataPoint]):
     "(not) get from db, analyze, notify"
-    -> {"all_symbols": [], "historic_data": {"<symbol>": {"last_n": [{"<row_from_db>":""}]}}}
-    what if symbols didn't have updates for a long time (is inactive) or just registered
-    pull only symbols that are active -> have update id column, and latest update id record
-    when pulling updates - can pull all that have last update id as update id of interest and some limit - here i can also check that last element is not what expected in terms of update id (given that all ten are returned) 
+    # -> {"all_symbols": [], "historic_data": {"<symbol>": {"last_n": [{"<row_from_db>":""}]}}}
+    # what if symbols didn't have updates for a long time (is inactive) or just registered
+    # pull only symbols that are active -> have update id column, and latest update id record
+    # when pulling updates - can pull all that have last update id as update id of interest and some limit - here i can also check that last element is not what expected in terms of update id (given that all ten are returned)
     for data_point in latest_tickers_data_points:
         symbol = data_point["symbol"]
         insta_notifications_main(data_point, symbol)

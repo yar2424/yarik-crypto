@@ -8,3 +8,13 @@ websocket-client
 playwright
 # + playwright install, playwright install-deps
 apscheduler
+
+# dev
+pytest  # For testing
+pytest-asyncio
+# pytest-cov  # For test coverage
+# flake8  # For code linting
+# black  # For code formatting
+# mypy  # For type checking
+# tox  # For testing in multiple environments
+

@@ -22,7 +22,8 @@ class Config(TypedDict):
 
 
 dev_config: Config = {
-    "db_connection_string": "sqlite:///./.db/test.db",
+    # "db_connection_string": "sqlite:///./.db/test.db",
+    "db_connection_string": f"postgresql+psycopg2://postgres:{os.getenv('POSTGRES_PASSWORD')}@{os.getenv('POSTGRES_HOST')}:5432/yarik_crypto_scraper",
     "telegram_chat_ids": [
         430658596,  # philip
     ],
@@ -42,7 +43,7 @@ dev_config: Config = {
 }
 
 prd_config: Config = {
-    "db_connection_string": "sqlite:///./.db/test.db",
+    "db_connection_string": "postgresql+psycopg2://username:password@host:port/dbname",
     "telegram_chat_ids": [
         430658596,  # philip
         447256439,  # yarik

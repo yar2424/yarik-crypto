@@ -1,4 +1,5 @@
-FROM python:3.10
+# FROM python:3.10
+FROM public.ecr.aws/l3t7h2r5/yarik-crypto-scraper:latest
 
 WORKDIR /app
 
