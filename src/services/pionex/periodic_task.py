@@ -12,13 +12,17 @@ from src.services.pionex.notifications.insta.main import (
 )
 from src.services.pionex.scrape.get_ticker_data import get_tickers_data
 from src.services.pionex.types_ import TickerAnalyticsDataPoint
+from src.utils.utils import timeit_context
 
 
 async def periodic_task(execution_timestamp: str):
     "scrape, create object, persist in db"
     "get from db, analyze, notify"
-    latest_tickers_data_points = scrape_update_db(execution_timestamp)
-    analysis_notif_send(await latest_tickers_data_points)
+    with timeit_context("periodic_task full execution"):
+        with timeit_context("periodic_task scraping"):
+            latest_tickers_data_points = await scrape_update_db(execution_timestamp)
+        with timeit_context("periodic_task notifs"):
+            analysis_notif_send(latest_tickers_data_points)
 
 
 async def scrape_update_db(execution_timestamp: str) -> List[TickerAnalyticsDataPoint]:
