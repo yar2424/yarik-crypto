@@ -1,5 +1,5 @@
 set -ex
 
 pip install -r requirements.txt
-playwright install
+playwright install chrome
 playwright install-deps
