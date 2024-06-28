@@ -18,10 +18,10 @@ from src.utils.utils import timeit_context
 async def periodic_task(execution_timestamp: str):
     "scrape, create object, persist in db"
     "get from db, analyze, notify"
-    with timeit_context("periodic_task full execution"):
-        with timeit_context("periodic_task scraping"):
+    with timeit_context("phemex full execution"):
+        with timeit_context("phemex scraping"):
             latest_tickers_data_points = await scrape_update_db(execution_timestamp)
-        with timeit_context("periodic_task notifs"):
+        with timeit_context("phemex notifs"):
             analysis_notif_send(latest_tickers_data_points)
 
 
