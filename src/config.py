@@ -39,7 +39,8 @@ dev_config: Config = {
     ],
     "jinja_templates_directory": "src/api/jinja_templates/",
     "check_every_seconds": 60,
-    "back_url": "http://localhost:8000",
+    # "back_url": "http://localhost:8000",
+    "back_url": f"http://{os.getenv('ECS_PUBLIC_IP')}:8000",
 }
 
 prd_config: Config = {
