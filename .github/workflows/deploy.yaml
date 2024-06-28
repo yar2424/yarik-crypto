@@ -62,4 +62,4 @@ jobs:
           --cluster $CLUSTER_NAME \
           --service $SERVICE_NAME \
           --force-new-deployment \
-          # --deployment-configuration minimumHealthyPercent=100,maximumPercent=100
+          --deployment-configuration minimumHealthyPercent=100,maximumPercent=100
