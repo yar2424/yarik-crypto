@@ -6,7 +6,7 @@ from src.config import config
 engine = create_engine(
     config["db_connection_string"],
     connect_args={
-        "check_same_thread": False,  # needed for SQLite, remove for other databases
+        # "check_same_thread": False,  # needed for SQLite, remove for other databases
     },
     # echo=True,
 )
