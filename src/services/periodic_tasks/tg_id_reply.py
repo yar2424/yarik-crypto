@@ -5,12 +5,15 @@ from src.utils.telegram import get_updates, send_message
 
 
 def main():
-    threads = []
-    for chat in config["chats"]:
-        thread = threading.Thread(target=polling_id_reply, args=(chat["name"],))
-        thread.start()
-        threads.append(thread)
-    thread.join()
+    # threads = []
+    # for chat in config["chats"]:
+    #     thread = threading.Thread(target=polling_id_reply, args=(chat["name"],))
+    #     thread.start()
+    #     threads.append(thread)
+    # thread.join()
+
+    chat = config["chats"][0]
+    polling_id_reply(chat["name"])
 
 
 def polling_id_reply(chat: str):
