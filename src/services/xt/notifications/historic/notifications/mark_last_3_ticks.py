@@ -17,11 +17,11 @@ notif_name_to_priority = {
 }
 
 notif_name_to_chats = {
-    "mark_last-0_05-3_ticks": ["all", "prior"],
-    "mark_last-0_5-3_ticks": ["all", "prior"],
-    "mark_last-1_3-3_ticks": ["all", "prior"],
-    "mark_last-5-3_ticks": ["all", "prior"],
-    "mark_last-10-3_ticks": ["all", "prior"],
+    "mark_last-0_05-3_ticks": ["all", "prior", "individ_xt"],
+    "mark_last-0_5-3_ticks": ["all", "prior", "individ_xt"],
+    "mark_last-1_3-3_ticks": ["all", "prior", "individ_xt"],
+    "mark_last-5-3_ticks": ["all", "prior", "individ_xt"],
+    "mark_last-10-3_ticks": ["all", "prior", "individ_xt"],
 }
 
 

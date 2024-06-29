@@ -11,9 +11,10 @@ from src.db.repositories.telegram.NotifsRateLimiting import (
 from src.services.bingx.notifications.historic.notifications.fair_trade_3_ticks import (
     get_notif_to_fire as get_notif_to_fire_fair_trade_3_ticks,
 )
-from src.services.bingx.notifications.historic.notifications.funding_rate_neg_3_ticks import (
-    get_notif_to_fire as get_notif_to_fire_funding_rate_neg_3_ticks,
-)
+
+# from src.services.bingx.notifications.historic.notifications.funding_rate_neg_3_ticks import (
+#     get_notif_to_fire as get_notif_to_fire_funding_rate_neg_3_ticks,
+# )
 from src.services.bingx.notifications.historic.notifications.index_fair_3_ticks import (
     get_notif_to_fire as get_notif_to_fire_index_fair_3_ticks,
 )
@@ -106,28 +107,28 @@ Last 30 data points: {last_30_ticks_table_url_template(symbol)}
         update_last_sent_now(full_notif_name)
 
 
-def handle_funding_rate_neg(data_points: List[TickerAnalyticsDataPoint], symbol: str):
-    notif_to_fire = get_notif_to_fire_funding_rate_neg_3_ticks(data_points)
-    if not notif_to_fire:
-        return
-    full_notif_name = f"{notif_prefix}-{symbol}-{notif_to_fire['name']}"
+# def handle_funding_rate_neg(data_points: List[TickerAnalyticsDataPoint], symbol: str):
+#     notif_to_fire = get_notif_to_fire_funding_rate_neg_3_ticks(data_points)
+#     if not notif_to_fire:
+#         return
+#     full_notif_name = f"{notif_prefix}-{symbol}-{notif_to_fire['name']}"
 
-    print(
-        f"wanna fire: {full_notif_name} with current value: {notif_to_fire['last_value']}"
-    )
+#     print(
+#         f"wanna fire: {full_notif_name} with current value: {notif_to_fire['last_value']}"
+#     )
 
-    priority_visual = "❗" * notif_to_fire["priority"]
+#     priority_visual = "❗" * notif_to_fire["priority"]
 
-    message_to_send = f"""
-{priority_visual}
-{full_notif_name}
-Last value: {notif_to_fire['last_value']:f}
-Last 30 data points: {last_30_ticks_table_url_template(symbol)}
-"""
+#     message_to_send = f"""
+# {priority_visual}
+# {full_notif_name}
+# Last value: {notif_to_fire['last_value']:f}
+# Last 30 data points: {last_30_ticks_table_url_template(symbol)}
+# """
 
-    if should_send_notif_rate_limit(full_notif_name):
-        if notif_to_fire["chats"]:
-            send_message_broadcast_chats(message_to_send, notif_to_fire["chats"])
-        else:
-            send_message_broadcast(message_to_send)
-        update_last_sent_now(full_notif_name)
+#     if should_send_notif_rate_limit(full_notif_name):
+#         if notif_to_fire["chats"]:
+#             send_message_broadcast_chats(message_to_send, notif_to_fire["chats"])
+#         else:
+#             send_message_broadcast(message_to_send)
+#         update_last_sent_now(full_notif_name)

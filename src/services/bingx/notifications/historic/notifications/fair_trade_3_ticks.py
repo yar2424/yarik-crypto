@@ -19,9 +19,9 @@ notif_name_to_priority = {
 notif_name_to_chats = {
     "fair_last-0_05-3_ticks": [],
     "fair_last-0_5-3_ticks": [],
-    "fair_last-1_3-3_ticks": ["all", "prior"],
-    "fair_last-5-3_ticks": ["all", "prior"],
-    "fair_last-10-3_ticks": ["all", "prior"],
+    "fair_last-1_3-3_ticks": ["all", "prior", "individ_bingx"],
+    "fair_last-5-3_ticks": ["all", "prior", "individ_bingx"],
+    "fair_last-10-3_ticks": ["all", "prior", "individ_bingx"],
 }
 
 

@@ -7,3 +7,10 @@ uvicorn src.api.app:app --reload
 
 
 export $(grep -v '^#' dev.env | xargs)
+
+
+psql -h $POSTGRES_HOST -U postgres -p 5432
+CREATE DATABASE yarik_crypto_scraper;
+
+
+docker build -t public.ecr.aws/l3t7h2r5/yarik-crypto-scraper:latest --push .

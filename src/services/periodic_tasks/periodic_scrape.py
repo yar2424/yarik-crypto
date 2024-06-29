@@ -17,7 +17,7 @@ def async_wrapper(func, *args):
 async def periodic_scrape():
     current_timestamp = zulu_time_now_str()
 
-    with ProcessPoolExecutor(max_workers=6) as executor:
+    with ProcessPoolExecutor(max_workers=100) as executor:
         # with ThreadPoolExecutor(max_workers=6) as executor:
         # Schedule the tasks to run in the pool
         futures = [

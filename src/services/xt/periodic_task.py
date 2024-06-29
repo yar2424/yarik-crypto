@@ -1,3 +1,5 @@
+from concurrent.futures import ThreadPoolExecutor, wait
+
 from typing_extensions import List
 
 from src.db.repositories.xt.TickerTimeseries import (
@@ -10,7 +12,7 @@ from src.services.xt.notifications.historic.main import (
 from src.services.xt.notifications.insta.main import main as insta_notifications_main
 from src.services.xt.scrape.get_ticker_data import get_tickers_data
 from src.services.xt.types_ import TickerAnalyticsDataPoint
-from src.utils.utils import timeit_context
+from src.utils.utils import split_list, timeit_context
 
 
 async def periodic_task(execution_timestamp: str):
@@ -51,6 +53,18 @@ async def scrape_update_db(execution_timestamp: str) -> List[TickerAnalyticsData
 
 def analysis_notif_send(latest_tickers_data_points: List[TickerAnalyticsDataPoint]):
     "(not) get from db, analyze, notify"
+    parallelization_level = 10
+    task_groups = split_list(latest_tickers_data_points, parallelization_level)
+
+    with ThreadPoolExecutor(max_workers=parallelization_level) as executor:
+        futures = [
+            executor.submit(analysis_notif_send_, task_group)
+            for task_group in task_groups
+        ]
+        wait(futures)
+
+
+def analysis_notif_send_(latest_tickers_data_points: List[TickerAnalyticsDataPoint]):
     for data_point in latest_tickers_data_points:
         symbol = data_point["symbol"]
         insta_notifications_main(data_point, symbol)

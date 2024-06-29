@@ -17,18 +17,18 @@ notif_name_to_priority = {
 }
 
 notif_name_to_chats = {
-    "mark_last-0_05-3_ticks": ["all", "prior"],
-    "mark_last-0_5-3_ticks": ["all", "prior"],
-    "mark_last-1_3-3_ticks": ["all", "prior"],
-    "mark_last-5-3_ticks": ["all", "prior"],
-    "mark_last-10-3_ticks": ["all", "prior"],
+    "mark_last-0_05-3_ticks": ["all", "prior", "individ_pionex"],
+    "mark_last-0_5-3_ticks": ["all", "prior", "individ_pionex"],
+    "mark_last-1_3-3_ticks": ["all", "prior", "individ_pionex"],
+    "mark_last-5-3_ticks": ["all", "prior", "individ_pionex"],
+    "mark_last-10-3_ticks": ["all", "prior", "individ_pionex"],
 }
 
 
 subnotifs: List[NotifTriggerParams] = [
     {"notif_name": "10-3_ticks", "threshold": 0.1},
     {"notif_name": "5-3_ticks", "threshold": 0.05},
-    {"notif_name": "1_3-3_ticks", "threshold": 0.013},
+    {"notif_name": "2_5-3_ticks", "threshold": 0.025},
     # {"notif_name": "0_5-3_ticks", "threshold": 0.005},
     # {"notif_name": "0_05-3_ticks", "threshold": 0.0005},
 ]  # in precedence order (only one (the first met) will be fired)

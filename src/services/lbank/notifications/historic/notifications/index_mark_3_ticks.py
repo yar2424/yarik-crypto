@@ -20,7 +20,7 @@ notif_name_to_priority = {
 subnotifs: List[NotifTriggerParams] = [
     {"notif_name": "8-3_ticks", "threshold": 0.08},
     {"notif_name": "4-3_ticks", "threshold": 0.04},
-    {"notif_name": "2_5-3_ticks", "threshold": 0.025},
+    # {"notif_name": "2_5-3_ticks", "threshold": 0.025},
     # {"notif_name": "0_5-3_ticks", "threshold": 0.005},
     # {"notif_name": "0_05-3_ticks", "threshold": 0.0005},
 ]  # in precedence order (only one (the first met) will be fired)

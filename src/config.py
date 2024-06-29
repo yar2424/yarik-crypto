@@ -36,6 +36,30 @@ dev_config: Config = {
             "name": "prior",
             "base_url": f"https://api.telegram.org/bot{os.getenv('TELEGRAM_TOKEN_PRIOR')}",
         },
+        {
+            "name": "individ_bingx",
+            "base_url": f"https://api.telegram.org/bot{os.getenv('TELEGRAM_TOKEN_INDIVID_BINGX')}",
+        },
+        {
+            "name": "individ_lbank",
+            "base_url": f"https://api.telegram.org/bot{os.getenv('TELEGRAM_TOKEN_INDIVID_LBANK')}",
+        },
+        {
+            "name": "individ_mexc",
+            "base_url": f"https://api.telegram.org/bot{os.getenv('TELEGRAM_TOKEN_INDIVID_MEXC')}",
+        },
+        {
+            "name": "individ_phemex",
+            "base_url": f"https://api.telegram.org/bot{os.getenv('TELEGRAM_TOKEN_INDIVID_PHEMEX')}",
+        },
+        {
+            "name": "individ_pionex",
+            "base_url": f"https://api.telegram.org/bot{os.getenv('')}",
+        },
+        {
+            "name": "individ_xt",
+            "base_url": f"https://api.telegram.org/bot{os.getenv('')}",
+        },
     ],
     "jinja_templates_directory": "src/api/jinja_templates/",
     "check_every_seconds": 600,
@@ -59,6 +83,30 @@ prd_config: Config = {
         {
             "name": "prior",
             "base_url": f"https://api.telegram.org/bot{os.getenv('TELEGRAM_TOKEN_PRIOR')}",
+        },
+        {
+            "name": "individ_bingx",
+            "base_url": f"https://api.telegram.org/bot{os.getenv('TELEGRAM_TOKEN_INDIVID_BINGX')}",
+        },
+        {
+            "name": "individ_lbank",
+            "base_url": f"https://api.telegram.org/bot{os.getenv('TELEGRAM_TOKEN_INDIVID_LBANK')}",
+        },
+        {
+            "name": "individ_mexc",
+            "base_url": f"https://api.telegram.org/bot{os.getenv('TELEGRAM_TOKEN_INDIVID_MEXC')}",
+        },
+        {
+            "name": "individ_phemex",
+            "base_url": f"https://api.telegram.org/bot{os.getenv('TELEGRAM_TOKEN_INDIVID_PHEMEX')}",
+        },
+        {
+            "name": "individ_pionex",
+            "base_url": f"https://api.telegram.org/bot{os.getenv('')}",
+        },
+        {
+            "name": "individ_xt",
+            "base_url": f"https://api.telegram.org/bot{os.getenv('')}",
         },
     ],
     "jinja_templates_directory": "src/api/jinja_templates/",

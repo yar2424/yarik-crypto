@@ -9,7 +9,7 @@ from src.services.lbank.notifications.insta.notifications.NotifParams import (
 subnotifs: List[SubNotifParams] = [
     {"name": "8", "threshold": 0.08},
     {"name": "4", "threshold": 0.04},
-    {"name": "2_5", "threshold": 0.025},
+    # {"name": "2_5", "threshold": 0.025},
 ]  # in precedence order (only one (the first met) will be fired)
 
 

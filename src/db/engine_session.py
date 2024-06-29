@@ -9,6 +9,7 @@ engine = create_engine(
         # "check_same_thread": False,  # needed for SQLite, remove for other databases
     },
     # echo=True,
+    pool_size=100,
 )
 
 # Create a session factory

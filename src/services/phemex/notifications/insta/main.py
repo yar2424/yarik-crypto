@@ -65,7 +65,9 @@ Last 30 data points: {last_30_ticks_table_url_template(symbol)}
 """
 
     if should_send_notif_rate_limit(full_notif_name):
-        send_message_broadcast_chats(message_to_send, ["all", "prior"])
+        send_message_broadcast_chats(
+            message_to_send, ["all", "prior", "individ_phemex"]
+        )
         update_last_sent_now(full_notif_name)
 
 
