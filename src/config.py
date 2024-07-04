@@ -19,6 +19,8 @@ class Config(TypedDict):
     jinja_templates_directory: str
     check_every_seconds: int
     back_url: str
+    ecs_cluster: str
+    ecs_service: str
 
 
 dev_config: Config = {
@@ -64,6 +66,8 @@ dev_config: Config = {
     "jinja_templates_directory": "src/api/jinja_templates/",
     "check_every_seconds": 600,
     "back_url": "http://localhost:8000",
+    "ecs_cluster": "",
+    "ecs_service": "",
 }
 
 prd_config: Config = {
@@ -112,6 +116,8 @@ prd_config: Config = {
     "jinja_templates_directory": "src/api/jinja_templates/",
     "check_every_seconds": 60,
     "back_url": f"http://{os.getenv('ECS_PUBLIC_IP')}:8000",
+    "ecs_cluster": "YarikCryptoScraper",
+    "ecs_service": "YarikCryptoScraper",
 }
 
 if env == "dev":

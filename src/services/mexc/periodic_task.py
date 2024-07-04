@@ -82,8 +82,17 @@ def analysis_notif_send(latest_tickers_data_points: List[TickerAnalyticsDataPoin
         wait(futures)
 
 
+def filter_data_points_with_low_leverage(
+    tickers_data_points: List[TickerAnalyticsDataPoint],
+):
+    return [dp for dp in tickers_data_points if dp["leverage_max"] > 20]
+
+
 def analysis_notif_send_(latest_tickers_data_points: List[TickerAnalyticsDataPoint]):
-    for data_point in latest_tickers_data_points:
+    latest_tickers_data_points_ = filter_data_points_with_low_leverage(
+        latest_tickers_data_points
+    )
+    for data_point in latest_tickers_data_points_:
         symbol = data_point["symbol"]
         insta_notifications_main(data_point, symbol)
 

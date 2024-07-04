@@ -1,4 +1,4 @@
-from sqlalchemy import UUID, Column, Integer, String
+from sqlalchemy import UUID, Column, Index, Integer, String
 from sqlalchemy.orm import Mapped, mapped_column
 
 from .._base import Base
@@ -18,3 +18,5 @@ class TickerTimeseries(Base):
 
     index_mark_delta_div_index: Mapped[float] = mapped_column()
     mark_last_delta_div_mark: Mapped[float] = mapped_column()
+
+    __table_args__ = (Index("idx_symbol_timestamp_pionex", "symbol", "timestamp"),)

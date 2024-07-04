@@ -8,6 +8,7 @@ websocket-client
 playwright
 # + playwright install, playwright install-deps
 apscheduler
+boto3
 
 # dev
 pytest  # For testing

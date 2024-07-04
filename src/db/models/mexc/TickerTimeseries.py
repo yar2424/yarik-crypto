@@ -1,4 +1,4 @@
-from sqlalchemy import UUID, Column, Integer, String
+from sqlalchemy import UUID, Column, Index, Integer, String
 from sqlalchemy.orm import Mapped, mapped_column
 
 from .._base import Base
@@ -21,3 +21,5 @@ class TickerTimeseries(Base):
     fair_last_delta_div_fair: Mapped[float] = mapped_column()
 
     last_fair_delta_div_avg: Mapped[float] = mapped_column()
+
+    __table_args__ = (Index("idx_symbol_timestamp_mexc", "symbol", "timestamp"),)
