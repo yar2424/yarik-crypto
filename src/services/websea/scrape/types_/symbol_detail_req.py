@@ -1,0 +1,73 @@
+from typing import List, Optional, TypedDict
+
+
+class SymbolDetailResult(TypedDict):
+    id: Optional[int]
+    symbolName: str
+    currency: Optional[str]
+    tradeCurrency: Optional[str]
+    newPrice: str
+    open: str
+    increase: str
+    increaseB: str
+    highPrice: str
+    lowPrice: str
+    amount: str
+    amountConvert: str
+    amountConvertU: str
+    vol: str
+    volConvert: str
+    volConvertU: str
+    volToUsd: str
+    marginMultipleArr: List[str]
+    markerPrice: str
+    holdVol: str
+    holdVolConvert: str
+    holdVolConvertU: str
+    maxHold: str
+    maxHoldConvert: str
+    maxHoldConvertU: str
+    capitalRate: str
+    countdown: str
+    buyRate: Optional[str]
+    sellRate: Optional[str]
+    pricePrecision: int
+    numberPrecision: int
+    icon: Optional[str]
+    recomMultiple: str
+    currencyExUsdt: float
+    currencyExCNY: float
+    isHot: Optional[int]
+    isNew: Optional[int]
+    faceValue: str
+    minTrade: str
+    minPrice: str
+    warningRiskRate: str
+    closePositionRiskRate: str
+    settlementTime: str
+    indexSource: str
+    serviceRate: str
+    changeSwitch: int
+    legalPrecision: str
+    warningRiskRateFull: Optional[str]
+    closePositionRiskRateFull: Optional[str]
+    isFull: int
+    isCollect: int
+    rateScale: str
+    taker: str
+    maker: str
+    maxTradeNum: str
+    maxTradeNumConvert: str
+    maxTradeNumConvertU: str
+    minMultiple: str
+    maxMultiple: str
+    feeCycle: int
+    indexPrice: str
+    liquidationRate: str
+    premiumPriceRatio: str
+
+
+class SymbolDetailApiResponse(TypedDict):
+    errno: int
+    errmsg: str
+    result: SymbolDetailResult

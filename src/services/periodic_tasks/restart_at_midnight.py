@@ -6,7 +6,6 @@ import boto3
 from apscheduler.schedulers.background import BackgroundScheduler
 
 from src.config import config
-from src.services.periodic_tasks.periodic_scrape import periodic_scrape
 
 
 def trigger_ecs_deployment():

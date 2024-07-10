@@ -1,0 +1,66 @@
+from typing import List, Optional, TypedDict
+
+
+class SymbolListResultItem(TypedDict):
+    id: int
+    name: str
+    marginMultiple: str
+    marginMultipleArr: List[str]
+    icon: str
+    tradeId: int
+    settleId: int
+    tradePoundage: str
+    settlePoundage: str
+    minQuantity: str
+    maxQuantity: str
+    minPrice: str
+    maxPrice: str
+    maxHave: str
+    openTime: str
+    closeTime: str
+    openStatus: int
+    sort: int
+    createTime: int
+    createUser: int
+    updateTime: int
+    updateUser: int
+    isDeleted: int
+    pricePrecision: int
+    numberPrecision: int
+    marketPer: str
+    recomMultiple: str
+    fictitiouNum: int
+    maxPremium: str
+    minPremium: str
+    warningRiskRate: str
+    closePositionRiskRate: str
+    faceValue: str
+    premiumPriceRatio: str
+    settlementTime: str
+    indexSource: str
+    isRecommend: str
+    isHot: int
+    isShow: int
+    isNew: int
+    outRiskRate: str
+    trade: str
+    settle: str
+    changeSwitch: int
+    isFull: int
+    region: str
+    tempSortSwitch: int
+    tempSort: int
+    tempSortEndTime: int
+    liquidationRate: str
+    isLiquidation: int
+    minMultiple: str
+    maxMultiple: str
+    feeCycle: int
+    positionPlanId: int
+    adlOpen: int
+
+
+class SymbolListApiResponse(TypedDict):
+    errno: int
+    errmsg: str
+    result: List[SymbolListResultItem]

@@ -5,12 +5,18 @@ from datetime import datetime, timedelta
 from apscheduler.schedulers.background import BackgroundScheduler
 
 from src.config import config
-from src.services.periodic_tasks.periodic_scrape import periodic_scrape
+from src.services.periodic_tasks.periodic_scrape import (
+    periodic_scrape_every_1_min,
+    periodic_scrape_every_2_min,
+)
 
 
 def main():
-    def periodic_task():
-        asyncio.run(periodic_scrape())
+    def periodic_task_1():
+        asyncio.run(periodic_scrape_every_1_min())
+
+    def periodic_task_2():
+        asyncio.run(periodic_scrape_every_2_min())
 
     scheduler = BackgroundScheduler()
 
@@ -19,9 +25,17 @@ def main():
     # start_time = now.replace(second=0, microsecond=0)
 
     scheduler.add_job(
-        periodic_task,
+        periodic_task_1,
         "interval",
         seconds=config["check_every_seconds"],
+        start_date=start_time,
+        max_instances=3,
+    )
+
+    scheduler.add_job(
+        periodic_task_2,
+        "interval",
+        seconds=120,
         start_date=start_time,
         max_instances=3,
     )

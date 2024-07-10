@@ -25,7 +25,7 @@ class Config(TypedDict):
 
 dev_config: Config = {
     # "db_connection_string": "sqlite:///./.db/test.db",
-    "db_connection_string": f"postgresql+psycopg2://postgres:{os.getenv('POSTGRES_PASSWORD')}@{os.getenv('POSTGRES_HOST')}:5432/yarik_crypto_scraper",
+    "db_connection_string": f"postgresql+psycopg2://{os.getenv('POSTGRES_USER')}:{os.getenv('POSTGRES_PASSWORD')}@{os.getenv('POSTGRES_HOST')}:5432/{os.getenv('POSTGRES_DB_NAME')}",
     "telegram_chat_ids": [
         430658596,  # philip
     ],
@@ -62,16 +62,28 @@ dev_config: Config = {
             "name": "individ_xt",
             "base_url": f"https://api.telegram.org/bot{os.getenv('')}",
         },
+        {
+            "name": "individ_pionex",
+            "base_url": f"https://api.telegram.org/bot{os.getenv('TELEGRAM_TOKEN_INDIVID_PIONEX')}",
+        },
+        {
+            "name": "individ_xt",
+            "base_url": f"https://api.telegram.org/bot{os.getenv('TELEGRAM_TOKEN_INDIVID_XT')}",
+        },
+        {
+            "name": "individ_bitrue",
+            "base_url": f"https://api.telegram.org/bot{os.getenv('TELEGRAM_TOKEN_INDIVID_BITRUE')}",
+        },
     ],
     "jinja_templates_directory": "src/api/jinja_templates/",
-    "check_every_seconds": 600,
+    "check_every_seconds": 60,
     "back_url": "http://localhost:8000",
     "ecs_cluster": "",
     "ecs_service": "",
 }
 
 prd_config: Config = {
-    "db_connection_string": f"postgresql+psycopg2://postgres:{os.getenv('POSTGRES_PASSWORD')}@{os.getenv('POSTGRES_HOST')}:5432/yarik_crypto_scraper",
+    "db_connection_string": f"postgresql+psycopg2://{os.getenv('POSTGRES_USER')}:{os.getenv('POSTGRES_PASSWORD')}@{os.getenv('POSTGRES_HOST')}:5432/{os.getenv('POSTGRES_DB_NAME')}",
     "telegram_chat_ids": [
         430658596,  # philip
         447256439,  # yarik
@@ -106,11 +118,15 @@ prd_config: Config = {
         },
         {
             "name": "individ_pionex",
-            "base_url": f"https://api.telegram.org/bot{os.getenv('')}",
+            "base_url": f"https://api.telegram.org/bot{os.getenv('TELEGRAM_TOKEN_INDIVID_PIONEX')}",
         },
         {
             "name": "individ_xt",
-            "base_url": f"https://api.telegram.org/bot{os.getenv('')}",
+            "base_url": f"https://api.telegram.org/bot{os.getenv('TELEGRAM_TOKEN_INDIVID_XT')}",
+        },
+        {
+            "name": "individ_bitrue",
+            "base_url": f"https://api.telegram.org/bot{os.getenv('TELEGRAM_TOKEN_INDIVID_BITRUE')}",
         },
     ],
     "jinja_templates_directory": "src/api/jinja_templates/",

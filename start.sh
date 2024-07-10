@@ -14,7 +14,7 @@ echo $ECS_PUBLIC_IP
 
 # command > >(tee /proc/$$/fd/1) 2> >(tee /proc/$$/fd/2 >&2)
 
-# PYTHONPATH=. python src/services/one_off_tasks/notify_about_restart.py 
+PYTHONPATH=. python src/services/one_off_tasks/notify_about_restart.py 
 
 PYTHONPATH=. python src/entrypoints/tg_id_reply.py &
 

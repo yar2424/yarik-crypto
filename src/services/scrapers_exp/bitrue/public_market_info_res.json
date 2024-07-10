@@ -1,0 +1,13 @@
+{
+  "code": "0",
+  "msg": "Success",
+  "args": null,
+  "data": {
+    "currentFundRate": 0.00010093,
+    "indexPrice": 66018.21,
+    "remainingSecond": 5816,
+    "tagPrice": 65962.9954956481115296,
+    "nextFundRate": 0.00010093
+  },
+  "succ": true
+}

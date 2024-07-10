@@ -32,16 +32,16 @@ ws = create_connection("wss://futures.bitvenus.com/ws/quote/v1?lang=en-us&user_i
 # )
 # ws.send(
 #     '{"id":"broker","topic":"broker","event":"sub","params":{"org":"9001","realtimeInterval":"24h","binary":true}}'
-# )
+# ) # last_price
 # ws.send(
 #     '{"id":"broker","topic":"broker","event":"cancel","params":{"org":"9001","realtimeInterval":"24h","binary":true}}'
 # )
 # ws.send(
 #     '{"id":"broker","topic":"broker","event":"sub","params":{"org":"9001","realtimeInterval":"24h","binary":true}}'
 # )
-# ws.send(
-#     '{"id":"kline_301BTC-SWAP-USDT_15m","topic":"kline_15m","event":"sub","symbol":"301.BTC-SWAP-USDT","params":{"binary":true,"klineType":"15m","limit":1500}}'
-# )
+ws.send(
+    '{"id":"kline_301BTC-SWAP-USDT_15m","topic":"kline_15m","event":"sub","symbol":"301.BTC-SWAP-USDT","params":{"binary":true,"klineType":"15m","limit":1500}}'
+)
 
 
 for i in range(3):

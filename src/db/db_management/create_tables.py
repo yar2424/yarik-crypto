@@ -3,11 +3,16 @@ from src.db.models._base import Base  # Import base
 
 # Importing the models is essential for create_all to recognize them
 from src.db.models.bingx.TickerTimeseries import TickerTimeseries
+from src.db.models.bitrue.TickerTimeseries import TickerTimeseries
+from src.db.models.bitvenus.TickerTimeseries import TickerTimeseries
+from src.db.models.blofin.TickerTimeseries import TickerTimeseries
 from src.db.models.lbank.TickerTimeseries import TickerTimeseries
 from src.db.models.mexc.TickerTimeseries import TickerTimeseries
 from src.db.models.phemex.TickerTimeseries import TickerTimeseries
 from src.db.models.pionex.TickerTimeseries import TickerTimeseries
 from src.db.models.telegram.NotifsRateLimiting import NotifsRateLimiting
+from src.db.models.toobit.TickerTimeseries import TickerTimeseries
+from src.db.models.websea.TickerTimeseries import TickerTimeseries
 from src.db.models.xt.TickerTimeseries import TickerTimeseries
 
 
