@@ -74,6 +74,22 @@ dev_config: Config = {
             "name": "individ_bitrue",
             "base_url": f"https://api.telegram.org/bot{os.getenv('TELEGRAM_TOKEN_INDIVID_BITRUE')}",
         },
+        {
+            "name": "individ_bitvenus",
+            "base_url": f"https://api.telegram.org/bot{os.getenv('TELEGRAM_TOKEN_INDIVID_BITVENUS')}",
+        },
+        {
+            "name": "individ_blofin",
+            "base_url": f"https://api.telegram.org/bot{os.getenv('TELEGRAM_TOKEN_INDIVID_BLOFIN')}",
+        },
+        {
+            "name": "individ_websea",
+            "base_url": f"https://api.telegram.org/bot{os.getenv('TELEGRAM_TOKEN_INDIVID_WEBSEA')}",
+        },
+        {
+            "name": "individ_toobit",
+            "base_url": f"https://api.telegram.org/bot{os.getenv('TELEGRAM_TOKEN_INDIVID_TOOBIT')}",
+        },
     ],
     "jinja_templates_directory": "src/api/jinja_templates/",
     "check_every_seconds": 60,
@@ -127,6 +143,22 @@ prd_config: Config = {
         {
             "name": "individ_bitrue",
             "base_url": f"https://api.telegram.org/bot{os.getenv('TELEGRAM_TOKEN_INDIVID_BITRUE')}",
+        },
+        {
+            "name": "individ_bitvenus",
+            "base_url": f"https://api.telegram.org/bot{os.getenv('TELEGRAM_TOKEN_INDIVID_BITVENUS')}",
+        },
+        {
+            "name": "individ_blofin",
+            "base_url": f"https://api.telegram.org/bot{os.getenv('TELEGRAM_TOKEN_INDIVID_BLOFIN')}",
+        },
+        {
+            "name": "individ_websea",
+            "base_url": f"https://api.telegram.org/bot{os.getenv('TELEGRAM_TOKEN_INDIVID_WEBSEA')}",
+        },
+        {
+            "name": "individ_toobit",
+            "base_url": f"https://api.telegram.org/bot{os.getenv('TELEGRAM_TOKEN_INDIVID_TOOBIT')}",
         },
     ],
     "jinja_templates_directory": "src/api/jinja_templates/",

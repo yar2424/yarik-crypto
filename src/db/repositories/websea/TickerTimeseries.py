@@ -30,7 +30,7 @@ def get_ticker_timeseries(symbol: str, steps: int) -> List[TickerAnalyticsDataPo
                 "index_mark_delta_div_index": row.index_mark_delta_div_index,
                 "mark_last_delta_div_mark": row.mark_last_delta_div_mark,
             }
-            for row in rows
+            for row in reversed(rows)
         ]
 
 

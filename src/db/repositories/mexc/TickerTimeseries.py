@@ -32,7 +32,7 @@ def get_ticker_timeseries(symbol: str, steps: int) -> List[TickerAnalyticsDataPo
                 #
                 "last_fair_delta_div_avg": row.last_fair_delta_div_avg,
             }
-            for row in rows
+            for row in reversed(rows)
         ]
 
 
