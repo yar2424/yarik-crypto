@@ -50,7 +50,7 @@ async def periodic_scrape_every_2_min():
         # with ThreadPoolExecutor(max_workers=6) as executor:
         # Schedule the tasks to run in the pool
         futures = [
-            executor.submit(async_wrapper, periodic_task_bitvenus, current_timestamp),
+            # executor.submit(async_wrapper, periodic_task_bitvenus, current_timestamp),
         ]
 
         # Wait for all tasks to complete
