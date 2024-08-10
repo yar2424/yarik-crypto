@@ -28,12 +28,12 @@ async def register_session():
 
 @router.get("/n_last_ticks", tags=["blofin"])
 async def n_last_ticks(symbol: str, n: int):
-    return get_ticker_timeseries(symbol, steps=n)
+    return reversed(get_ticker_timeseries(symbol, steps=n))
 
 
 @router.get("/n_last_ticks_table", tags=["blofin"])
 async def n_last_ticks_table(request: Request, symbol: str, n: int):
-    data_points = get_ticker_timeseries(symbol, steps=n)
+    data_points = reversed(get_ticker_timeseries(symbol, steps=n))
     pretty_data_points = [
         {**data_point, "n": str(idx + 1), "timestamp": data_point["timestamp"][:-10]}
         for idx, data_point in enumerate(data_points)
@@ -62,7 +62,7 @@ async def n_last_ticks_table(request: Request, symbol: str, n: int):
 
 @router.get("/n_last_ticks_csv", tags=["blofin"])
 async def n_last_ticks_csv(symbol: str, n: int):
-    data = get_ticker_timeseries(symbol, steps=n)
+    data = reversed(get_ticker_timeseries(symbol, steps=n))
 
     # Create a string buffer to store the CSV data
     buffer = io.StringIO()
