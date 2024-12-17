@@ -15,7 +15,7 @@ from src.utils.telegram import send_message_broadcast
 router = APIRouter()
 
 
-@router.get("/scrape/{symbol}", tags=["bingx"])
+@router.get("/scrape/{symbol}", tags=["bingx"]) #test
 async def scrape_symbol(symbol: str):
     return await get_ticker_data(symbol)
 
