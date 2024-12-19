@@ -36,6 +36,7 @@ def send_message(chat_id: int, text: str, chat: str):
         print(response.text)
         print(url)
         print(payload)
+        
 
 
 def get_updates(last_update_id: int, chat: str) -> List["Update"]:

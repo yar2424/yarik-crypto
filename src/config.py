@@ -36,7 +36,7 @@ dev_config: Config = {
         },
         {
             "name": "prior",
-            "base_url": f"https://api.telegram.org/bot{os.getenv('TELEGRAM_TOKEN_PRIOR')}",
+            "base_url": f"https://api.telegram.org/bot{os.getenv('TELEGRAM_TOKEN_PRIOR')}", 
         },
         {
             "name": "individ_bingx",
