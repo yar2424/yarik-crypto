@@ -26,17 +26,17 @@ async def periodic_scrape_every_1_min():
         # with ThreadPoolExecutor(max_workers=6) as executor:
         # Schedule the tasks to run in the pool
         futures = [
-            executor.submit(async_wrapper, periodic_task_bingx, current_timestamp),
+            #executor.submit(async_wrapper, periodic_task_bingx, current_timestamp),
             executor.submit(periodic_task_mexc, current_timestamp),
-            executor.submit(async_wrapper, periodic_task_lbank, current_timestamp),
-            executor.submit(async_wrapper, periodic_task_xt, current_timestamp),
-            executor.submit(async_wrapper, periodic_task_phemex, current_timestamp),
-            executor.submit(async_wrapper, periodic_task_pionex, current_timestamp),
+            #executor.submit(async_wrapper, periodic_task_lbank, current_timestamp),
+            #executor.submit(async_wrapper, periodic_task_xt, current_timestamp),
+            #executor.submit(async_wrapper, periodic_task_phemex, current_timestamp),
+            #executor.submit(async_wrapper, periodic_task_pionex, current_timestamp),
             #
-            executor.submit(async_wrapper, periodic_task_websea, current_timestamp),
-            executor.submit(async_wrapper, periodic_task_toobit, current_timestamp),
-            executor.submit(async_wrapper, periodic_task_blofin, current_timestamp),
-            executor.submit(async_wrapper, periodic_task_bitrue, current_timestamp),
+            #executor.submit(async_wrapper, periodic_task_websea, current_timestamp),
+            #executor.submit(async_wrapper, periodic_task_toobit, current_timestamp),
+            #executor.submit(async_wrapper, periodic_task_blofin, current_timestamp),
+            #executor.submit(async_wrapper, periodic_task_bitrue, current_timestamp),
         ]
 
         # Wait for all tasks to complete
